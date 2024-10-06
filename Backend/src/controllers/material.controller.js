@@ -54,7 +54,7 @@ const getAllMaterials = asyncHandler(async(req,res)=>{
     const {Class,subject,chapter,resources,type} = req.query;
     try {
         const materials = await Material.find({Class,subject,chapter,resources,type})
-        console.log("Querying for materials:", { Class, subject,chapter,resources,type });
+        // console.log("Querying for materials:", { Class, subject,chapter,resources,type });
         if (materials.length === 0) {
             return res.status(404).json({ message: 'No material found for the selected class,subject,chapter and resources.' });
         }

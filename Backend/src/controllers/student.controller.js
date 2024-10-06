@@ -196,7 +196,7 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
      } else if (error.name === "JsonWebTokenError") {
          throw new ApiError(401, "Invalid refresh token");
      } else {
-       console.log("error",error)
+      //  console.log("error",error)
          throw new ApiError(500, "An error occurred while refreshing the token");
      }
       
@@ -205,7 +205,7 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
 
 const changeCurrentPssword = asyncHandler(async(req,res)=>{
    const {oldPassword,newPassword} = req.body
-    console.log(req.body)
+   //  console.log(req.body)
     const student = await Student.findById(req.student?._id).select('+password')
 
     if(!student){
