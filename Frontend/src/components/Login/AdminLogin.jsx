@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import url from '../axios';
+import url from '../axios.jsx';
 // import axios from 'axios';
 
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import HiEye and HiEyeOff icons
