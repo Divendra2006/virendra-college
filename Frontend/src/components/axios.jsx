@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const url = axios.create({
-    baseURL : "https://virendra-college.onrender.com",
+    baseURL : "http://localhost:8000",
     withCredentials:true
 })
 
