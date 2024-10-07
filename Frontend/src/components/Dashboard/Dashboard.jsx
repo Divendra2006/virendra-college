@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import url from '../axios';
 import { useNavigate } from 'react-router-dom';
+
 
 const Dashboard = () => {
   const [file, setFile] = useState(null);
@@ -55,7 +56,7 @@ const Dashboard = () => {
 
     try {
       setIsUploading(true);
-      const response = await axios.post('http://localhost:8000/api/v1/material/upload', formData, {
+      const response = await url.post('/api/v1/material/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

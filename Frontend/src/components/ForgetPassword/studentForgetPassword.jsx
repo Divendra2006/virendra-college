@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import url from '../axios';
 import { Link } from 'react-router-dom';
 
 const DeleteAccount = () => {
@@ -12,7 +12,7 @@ const DeleteAccount = () => {
     setMessage(''); // Clear any previous message
 
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/students/delete-account', { Rollno });
+      const response = await url.post('/api/v1/students/delete-account', { Rollno });
 
       setMessage(response.data.message); // Set success message
       setIsSuccess(true); // Indicate success

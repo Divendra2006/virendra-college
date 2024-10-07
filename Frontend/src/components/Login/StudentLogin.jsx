@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import url from '../axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import HiEye and HiEyeOff icons
 axios.defaults.withCredentials = true;
 
@@ -22,7 +22,7 @@ const StudentLogin = () => {
 
     try {
       // Send POST request to your backend using Axios
-      const response = await axios.post('http://localhost:8000/api/v1/students/login', {
+      const response = await url.post('/api/v1/students/login', {
         Rollno,
         password,
       });

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import url from '../axios';
 import { useNavigate } from 'react-router-dom';
 
 const StudentDashboard = () => {
@@ -34,7 +34,7 @@ const StudentDashboard = () => {
 
     try {
       // Make a GET request to retrieve the material based on class, subject, chapter, resources, and type
-      const response = await axios.get('http://localhost:8000/api/v1/material', {
+      const response = await url.get('/api/v1/material', {
         params: {
           Class: selectedClass,
           subject: selectedSubject,

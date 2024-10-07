@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import url from '../axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 axios.defaults.withCredentials = true;
@@ -52,7 +52,7 @@ const AdminSignup = () => {
       setSubmitStatus('loading');
 
       try {
-        const response = await axios.post('http://localhost:8000/api/v1/admin/register', {
+        const response = await url.post('/api/v1/admin/register', {
           fullName: formData.fullName,
           email: formData.email,
           password: formData.password,

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import axios from 'axios';
+import url from './axios';
 
 const ProtectedRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }) => {
   React.useEffect(() => {
     const verifyAuth = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/v1/admin/current-admin', {
+        const response = await url.get('/api/v1/admin/current-admin', {
           withCredentials: true, 
         });
 

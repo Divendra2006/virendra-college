@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import url from '../axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import eye icons
 axios.defaults.withCredentials = true;
 
@@ -55,7 +55,7 @@ const StudentSignup = () => {
 
       // Make API request
       try {
-        const response = await axios.post('http://localhost:8000/api/v1/students/register', {
+        const response = await url.post('/api/v1/students/register', {
           fullName: formData.fullName,
           email: formData.email,
           password: formData.password,

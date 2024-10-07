@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
+import url from '../axios';
 import { useNavigate } from 'react-router-dom';
 
 const StudentLogout = () => {
@@ -10,7 +10,7 @@ const StudentLogout = () => {
     const handleLogout = async () => {
       try {
         
-        await axios.post('http://localhost:8000/api/v1/students/logout', {}, {
+        await url.post('/api/v1/students/logout', {}, {
           withCredentials: true, 
         });
 

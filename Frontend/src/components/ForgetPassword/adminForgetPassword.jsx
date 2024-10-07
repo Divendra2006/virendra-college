@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import url from '../axios';
 import { Link } from 'react-router-dom';
 
 const AdminDeleteAccount = () => {
@@ -12,7 +12,7 @@ const AdminDeleteAccount = () => {
     setMessage('');
 
     try {
-      const response = await axios.post('http://localhost:8000/api/v1/admin/forget-password', { email });
+      const response = await url.post('/api/v1/admin/forget-password', { email });
 
       setMessage(response.data.message); 
       setIsSuccess(true); 
