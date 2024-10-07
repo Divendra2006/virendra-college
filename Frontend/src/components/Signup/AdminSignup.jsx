@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import url from '../axios';
+// import axios from 'axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const AdminSignup = () => {
   const [formData, setFormData] = useState({

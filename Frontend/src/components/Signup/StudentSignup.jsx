@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import url from '../axios';
+// import axios from 'axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import eye icons
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const StudentSignup = () => {
   const [formData, setFormData] = useState({
