@@ -179,7 +179,8 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
       // console.log("hello")
       const options = {
          httpOnly:true,
-         secure:true
+         secure:true,
+         sameSite: "None"
       }
       
       const {accessToken,newRefreshToken} = await generateAccessandRefreshTokens(student._id)
