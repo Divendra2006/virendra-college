@@ -104,7 +104,11 @@ const loginStudent = asyncHandler(async(req,res)=>{
    const options = {
       httpOnly : true,
       secure: true,
+      sameSite: "None" 
    }
+
+   console.log("Cookies: ", req.cookies);
+
 
    return res.status(200)
    .cookie("accessToken",accessToken,options)
@@ -137,6 +141,7 @@ const logoutStudent = asyncHandler(async(req,res)=>{
    const options = {
       httpOnly:true,
       secure:true,
+      sameSite: "None"
    }
 
    return res.status(200)
