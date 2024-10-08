@@ -275,6 +275,58 @@ const deleteStudentAccount = asyncHandler(async(req,res)=>{
   );
 })
 
+const addStudent = asyncHandler(async(req,res)=>{
+   const student =new Student(req.body);
+
+   const response =await student.save()
+   const createdResponse =await Student.findById(response._id).select("-password -refreshToken")
+   if(!createdResponse){
+      throw new ApiError(400,"createdResponse not found")
+   }
+
+   return res.status(200).json("student added successfully")
+
+})
+
+const getStudentByRollno = asyncHandler(async(req,res)=>{
+   const {Rollno} = req.body;
+    if(!Rollno){
+      throw new ApiError("Rollno is not found")
+    }
+
+    const student =await Student.findOne({Rollno}).select("-password -refreshToken")
+
+    if(!student){
+      throw new ApiError(400,"no student with this rollno is present")
+    }
+
+    return res.status(200).json(new ApiResponse(200,
+      {
+         student : student
+      }
+    ,"student found successfully"))
+})
+
+const getStudentsByClass = asyncHandler(async(req,res)=>{
+   const {Class} = req.body;
+
+   if(!Class){
+      throw new ApiError(400,"Class is not found")
+   }
+
+   const students = await Student.find({Class}).select("-password -refreshToken")
+
+   if(students.length === 0){
+      throw new ApiError(400,"no student with this class is present")
+   }
+
+   // const getStudents = await Student.findById(students._id)
+
+   return res.status(200).json(new ApiResponse(200,{
+      students : students
+   },"student find by class successfully"))
+})
+
 
 export {
    registerStudent,
@@ -285,5 +337,8 @@ export {
    getCurrentStudent,
    updateAccountDetails,
    deleteStudentAccount,
+   addStudent,
+   getStudentByRollno,
+   getStudentsByClass,
 
 }

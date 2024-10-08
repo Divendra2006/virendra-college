@@ -24,6 +24,19 @@ const studentSchema = new Schema({
         type:String,
         required:[true,"Password is required"],
     },
+    age:{
+        type:Number,
+    },
+    address:{
+        type:String,
+    },
+    guardian:{
+        name:String,
+        phone:String,
+    },
+    dateofAdmission:{
+        type:Date,
+    },
     avatar:{
         type:String,
     },
