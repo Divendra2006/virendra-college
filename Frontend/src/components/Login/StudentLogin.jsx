@@ -1,115 +1,214 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import url from '../axios.jsx';
-// import axios from 'axios';
-import { HiEye, HiEyeOff } from 'react-icons/hi'; // Import HiEye and HiEyeOff icons
-// axios.defaults.withCredentials = true;
+import { useNavigate } from 'react-router-dom';
+import url from '../axios.jsx'; // Assuming this is the axios instance
 
 const StudentLogin = () => {
-  // State to store form inputs, handle errors, and toggle password visibility
-  const [Rollno, setRollNo] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({
+    fullName: '',
+    Rollno: '',
+    Class: '',
+    dob: '',
+    guardianName: '',
+    phoneNo: '',
+    yearofAdmission: '',
+  });
+  const [errors, setErrors] = useState('');
+  const [submitStatus, setSubmitStatus] = useState('');
   const navigate = useNavigate();
 
-  const handleLogoutClick = () => {
-    navigate('/forget-password');
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  // Handle form submission
+  const validateErrors = () => {
+    const newErrors = {};
+    if (!formData.fullName) {
+      newErrors.fullName = 'Full name is required';
+    }
+    if (!formData.Rollno) {
+      newErrors.Rollno = 'Roll no is required';
+    }
+    if (!formData.Class) {
+      newErrors.Class = 'Class is required';
+    }
+    if (!formData.dob) {
+      newErrors.dob = 'Date of birth is required';
+    }
+    if (!formData.guardianName) {
+      newErrors.guardianName = 'Guardian name is required';
+    }
+    if (!formData.phoneNo) {
+      newErrors.phoneNo = 'Phone no is required';
+    }
+    if (!formData.yearofAdmission) {
+      newErrors.yearofAdmission = 'Year of admission is required';
+    }
+    return newErrors;
+  };
+
   const handleLogin = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
-
-    try {
-      // Send POST request to your backend using Axios
-      const response = await url.post('/api/v1/students/login', {
-        Rollno,
-        password,
-      });
-      navigate('/student/dashboard');
-
-      // Handle successful login (e.g., save token, redirect, etc.)
-      console.log('Login successful:', response.data);
-    } catch (error) {
-      // Handle error (e.g., show an error message)
-      setErrorMessage('Invalid login credentials');
-      console.log('Login error:', error);
+    e.preventDefault();
+    const formErrors = validateErrors();
+    if (Object.keys(formErrors).length === 0) {
+      setSubmitStatus('loading');
+      try {
+        const response = await url.post('/api/v1/students/login', formData);
+        setSubmitStatus('success');
+        navigate('/student/dashboard'); // Navigate to dashboard after successful login
+        console.log('Login successful:', response.data);
+      } catch (error) {
+        setSubmitStatus('failed');
+        console.error('Login failed:', error);
+      }
+    } else {
+      setErrors(formErrors);
     }
   };
 
   return (
-    <div>
-      <p className="text-xl text-center mb-8 font-bold text-gray-700">Login as Student</p>
-      <form onSubmit={handleLogin} className="space-y-6">
-        <div>
-          <label htmlFor="Rollno" className="block text-lg font-medium text-gray-800">
-            Roll Number
-          </label>
-          <input
-            type="text"
-            id="Rollno"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500"
-            placeholder="Enter your roll number"
-            value={Rollno}
-            onChange={(e) => setRollNo(e.target.value)}
-            required
-          />
-        </div>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-blue-100">
+      <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-lg rounded-lg">
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">Student Login</h2>
+        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+          <div className="mb-4">
+            <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Full Name"
+              required
+            />
+            {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
+          </div>
 
-        <div className="relative">
-          <label htmlFor="password" className="block text-lg font-medium text-gray-800">
-            Password
-          </label>
-          <input
-            type={showPassword ? 'text' : 'password'} // Toggle between text and password types
-            id="password"
-            className="w-full p-3 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-500"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <span
-            className="absolute inset-y-0 right-3 flex items-center cursor-pointer"
-            onClick={() => setShowPassword(!showPassword)} // Toggle password visibility
+          <div className="mb-4">
+            <label htmlFor="Rollno" className="block text-gray-700 font-medium mb-2">
+              Roll No
+            </label>
+            <input
+              type="text"
+              id="Rollno"
+              name="Rollno"
+              value={formData.Rollno}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Roll No"
+              required
+            />
+            {errors.Rollno && <p className="text-red-500 text-sm">{errors.Rollno}</p>}
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="Class" className="block text-gray-700 font-medium mb-2">
+              Class
+            </label>
+            <input
+              type="number"
+              id="Class"
+              name="Class"
+              value={formData.Class}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Class"
+              required
+            />
+            {errors.Class && <p className="text-red-500 text-sm">{errors.Class}</p>}
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="dob" className="block text-gray-700 font-medium mb-2">
+              Date of Birth
+            </label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Date of Birth"
+              required
+            />
+            {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="guardianName" className="block text-gray-700 font-medium mb-2">
+              Guardian Name
+            </label>
+            <input
+              type="text"
+              id="guardianName"
+              name="guardianName"
+              value={formData.guardianName}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Guardian Name"
+              required
+            />
+            {errors.guardianName && <p className="text-red-500 text-sm">{errors.guardianName}</p>}
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="phoneNo" className="block text-gray-700 font-medium mb-2">
+              Phone No
+            </label>
+            <input
+              type="phoneno"
+              id="phoneNo"
+              name="phoneNo"
+              value={formData.phoneNo}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Phone no"
+              required
+            />
+            {errors.phoneNo && <p className="text-red-500 text-sm">{errors.phoneNo}</p>}
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="yearofAdmission" className="block text-gray-700 font-medium mb-2">
+              Year of Admission
+            </label>
+            <input
+              type="text"
+              id="yearofAdmission"
+              name="yearofAdmission"
+              value={formData.yearofAdmission}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
+              placeholder="Year of Admission"
+              required
+            />
+            {errors.yearofAdmission && <p className="text-red-500 text-sm">{errors.yearofAdmission}</p>}
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:bg-indigo-700 hover:scale-105"
           >
-            {showPassword ? (
-              <HiEyeOff className="h-5 w-5 text-gray-600 hover:text-gray-800 transition duration-300" />
-            ) : (
-              <HiEye className="h-5 w-5 text-gray-600 hover:text-gray-800 transition duration-300" />
-            )}
-          </span>
-        </div>
+            Login
+          </button>
 
-        {errorMessage && (
-          <div className="text-red-500 text-center">{errorMessage}</div>
-        )}
-
-        <button
-          type="submit"
-          className="w-full bg-orange-500 text-white p-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors duration-200 shadow-md"
-        >
-          Login
-        </button>
-      </form>
-
-      {/* Sign Up Link */}
-      <div className="text-center mt-8">
-        <p className="text-base">
-          Don't have an account?{' '}
-          <Link to="/signup" className="text-orange-500 underline font-semibold hover:text-orange-600">
-            Create an account
-          </Link>
-        </p>
-      </div>
-
-      <div className="text-center mt-8">
-        <p className="text-base">
-          <Link to="/forget-password" className="text-orange-500 underline font-semibold hover:text-orange-600">
-            Forget Password
-          </Link>
-        </p>
+          {submitStatus === 'loading' && (
+            <p className="text-blue-500 mt-4">Submitting...</p>
+          )}
+          {submitStatus === 'success' && (
+            <p className="text-green-500 mt-4">Login Successful!</p>
+          )}
+          {submitStatus === 'failed' && (
+            <p className="text-red-500 mt-4">Student not match with this credentials</p>
+          )}
+        </form>
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ const StudentDashboard = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  // Mapping subjects to chapters
   const chaptersBySubject = {
     Math: ['Chapter 1: Algebra', 'Chapter 2: Geometry', 'Chapter 3: Trigonometry'],
     Science: ['Chapter 1: Physics', 'Chapter 2: Chemistry', 'Chapter 3: Biology'],
@@ -20,7 +19,7 @@ const StudentDashboard = () => {
     History: ['Chapter 1: Ancient History', 'Chapter 2: Medieval History', 'Chapter 3: Modern History'],
   };
 
-  // Resource and Type Options
+ 
   const resourceOptions = ['PYQs', 'Practice Questions'];
   const typeOptions = ['Problems', 'Solutions'];
 
@@ -30,44 +29,34 @@ const StudentDashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage(''); // Clear any previous message
+    setMessage(''); 
 
     try {
-      // Make a GET request to retrieve the material based on class, subject, chapter, resources, and type
       const response = await url.get('/api/v1/material', {
         params: {
           Class: selectedClass,
           subject: selectedSubject,
           chapter: selectedChapter,
-          resources: selectedResource, // Include selected resource
-          type: selectedType, // Include selected type
+          resources: selectedResource,
+          type: selectedType, 
         },
       });
 
       if (response.data && response.data.length > 0) {
-        setMaterials(response.data); // Update materials state with the retrieved files
+        setMaterials(response.data); 
       } else {
         setMessage('No material found for the selected options.');
-        setMaterials([]); // Clear materials if none found
+        setMaterials([]);
       }
     } catch (error) {
       console.error('Error retrieving material:', error);
       setMessage('No material found for the selected options.');
-      setMaterials([]); // Clear materials on error
+      setMaterials([]); 
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-10 relative">
-      {/* Logout button styled and positioned */}
-      <div className="absolute top-4 right-4">
-        <button
-          onClick={handleLogoutClick}
-          className="bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-400 transition duration-300 transform hover:scale-105"
-        >
-          Logout
-        </button>
-      </div>
 
       <h1 className="text-4xl font-bold mb-10 text-gray-800">Student Dashboard</h1>
 
@@ -102,7 +91,7 @@ const StudentDashboard = () => {
             }}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedClass} // Disable subject selection until a class is selected
+            disabled={!selectedClass} 
           >
             <option value="">Select Subject</option>
             {selectedClass &&
@@ -121,7 +110,7 @@ const StudentDashboard = () => {
             onChange={(e) => setSelectedChapter(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedSubject} // Disable chapter selection until a subject is selected
+            disabled={!selectedSubject} 
           >
             <option value="">Select Chapter</option>
             {selectedSubject &&
@@ -133,7 +122,7 @@ const StudentDashboard = () => {
           </select>
         </div>
 
-        {/* Resources Selection */}
+      
         <div>
           <label className="block text-lg font-medium text-gray-700">Resources:</label>
           <select
@@ -141,7 +130,7 @@ const StudentDashboard = () => {
             onChange={(e) => setSelectedResource(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedChapter} // Disable resource selection until a chapter is selected
+            disabled={!selectedChapter} 
           >
             <option value="">Select Resource</option>
             {resourceOptions.map((resource, index) => (
@@ -152,7 +141,7 @@ const StudentDashboard = () => {
           </select>
         </div>
 
-        {/* Type Selection */}
+       
         <div>
           <label className="block text-lg font-medium text-gray-700">Type:</label>
           <select
@@ -160,7 +149,7 @@ const StudentDashboard = () => {
             onChange={(e) => setSelectedType(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedResource} // Disable type selection until a resource is selected
+            disabled={!selectedResource} 
           >
             <option value="">Select Type</option>
             {typeOptions.map((type, index) => (
@@ -178,6 +167,14 @@ const StudentDashboard = () => {
           Submit
         </button>
       </form>
+
+      <button
+        onClick={handleLogoutClick}
+        className="min-w-[120px] mt-8 py-2 px-4 bg-red-500 text-white font-bold rounded-lg shadow-lg hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 transition duration-300"
+      >
+         Logout
+      </button>
+
 
       {materials.length > 0 && (
         <div className="mt-8">

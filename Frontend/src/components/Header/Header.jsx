@@ -1,29 +1,38 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { FaUser, FaGraduationCap } from 'react-icons/fa'; 
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate(); 
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  
+  const handleSelectChange = (event) => {
+    const selectedPath = event.target.value;
+    if (selectedPath) {
+      navigate(selectedPath);
+    }
+  };
+
   return (
-    <header className="bg-gray-600 text-white p-10 mb-12">
+    <header className="bg-gray-700 text-white p-8 mb-10 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        {/* School Logo */}
-        <div className="flex items-center space-x-10">
+       
+        <div className="flex items-center space-x-6">
           <img
-            src="your-school-logo-url.png" // Replace with your logo URL
+            src="your-school-logo-url.png" 
             alt="School Logo"
-            className="w-12 h-12 mr-2"
+            className="w-14 h-14 mr-2"
           />
-          <span className="ml-1 text-xl text-pretty font-bold">
+          <span className="text-xl text-white font-semibold">
             Shri Ram Vishal Singh Shrimati Ramdhani Devi Inter College
           </span>
         </div>
 
-        {/* Hamburger Icon */}
         <div className="md:hidden">
           <button onClick={toggleMenu} className="focus:outline-none">
             <svg
@@ -43,14 +52,14 @@ function Header() {
           </button>
         </div>
 
-        {/* Navigation Links - visible on larger screens */}
-        <nav className="hidden md:flex justify-center space-x-6">
+     
+        <nav className="hidden md:flex justify-center space-x-6 text-lg">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 text-2xl duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+              `block py-2 pr-4 pl-3 duration-200 ${
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             Home
@@ -58,22 +67,19 @@ function Header() {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 text-2xl duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+              `block py-2 pr-4 pl-3 duration-200 ${
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             About
           </NavLink>
-          {/* <NavLink
-          to="/dashboard">
-          </NavLink> */}
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 text-2xl duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+              `block py-2 pr-4 pl-3 duration-200 ${
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             Contact Us
@@ -81,50 +87,62 @@ function Header() {
           <NavLink
             to="/career"
             className={({ isActive }) =>
-              `block py-2 pr-4 pl-3 text-2xl duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+              `block py-2 pr-4 pl-3 duration-200 ${
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             Career Mentor
           </NavLink>
-          
         </nav>
 
-        {/* Login & Signup Links - visible on larger screens */}
-        <div className="hidden md:flex ml-16 space-x-4">
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              `block py-2 px-4 text-2xl duration-200 border border-transparent hover:border-gray-300 hover:bg-white ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 rounded-lg hover:font-bold`
-            }
-          >
-            Login
-          </NavLink>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) =>
-              `block py-2 px-4 text-2xl duration-200 border border-transparent hover:border-gray-300 hover:bg-white ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 rounded-lg hover:font-bold`
-            }
-          >
-            Signup
-          </NavLink>
+        <div className="hidden md:flex ml-16 space-x-6">
+         
+          <div className="relative">
+            <div className="flex items-center space-x-2">
+              <FaUser className="text-white text-2xl" />
+              <select
+                onChange={handleSelectChange}
+                className="py-2 px-4 text-lg bg-white text-gray-900 border-2 border-gray-300 rounded-lg shadow-md appearance-none focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
+                style={{ backgroundImage: 'url(data:image/svg+xml;base64,PHN2ZyB...)' }} // Custom dropdown arrow image
+              >
+                <option value="" className="text-gray-900">
+                  Admin
+                </option>
+                <option value="/dashboard">Dashboard</option>
+                <option value="/AdminLogin">Login</option>
+                <option value="/AdminSignup">Signup</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="flex items-center space-x-2">
+              <FaGraduationCap className="text-white text-2xl" />
+              <select
+                onChange={handleSelectChange}
+                className="py-2 px-4 text-lg bg-white text-gray-900 border-2 border-gray-300 rounded-lg shadow-md appearance-none focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
+              >
+                <option value="" className="text-gray-900">
+                  Student
+                </option>
+                <option value="/student/dashboard">Dashboard</option>
+                <option value="/StudentLogin">Login</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu - visible only on small and medium screens */}
+     
       {isOpen && (
-        <div className="md:hidden flex flex-col space-y-2 mt-4 bg-gray-600 p-4">
+        <div className="md:hidden flex flex-col space-y-2 mt-4 bg-gray-700 p-4">
           <NavLink
             to="/"
             className={({ isActive }) =>
               `block py-2 text-lg duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             Home
@@ -133,8 +151,8 @@ function Header() {
             to="/about"
             className={({ isActive }) =>
               `block py-2 text-lg duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             About
@@ -143,8 +161,8 @@ function Header() {
             to="/contact"
             className={({ isActive }) =>
               `block py-2 text-lg duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             Contact Us
@@ -153,32 +171,32 @@ function Header() {
             to="/career"
             className={({ isActive }) =>
               `block py-2 text-lg duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
+                isActive ? 'text-orange-500' : 'text-white'
+              } hover:text-orange-500 hover:font-semibold`
             }
           >
             Career Mentor
           </NavLink>
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              `block py-2 text-lg duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
-            }
+
+        
+          <select
+            onChange={handleSelectChange}
+            className="py-2 px-4 bg-white text-gray-900 border border-transparent hover:border-gray-300 rounded-lg"
           >
-            Login
-          </NavLink>
-          <NavLink
-            to="/signup"
-            className={({ isActive }) =>
-              `block py-2 text-lg duration-200 ${
-                isActive ? 'text-orange-700' : 'text-gray-900'
-              } hover:text-orange-700 hover:font-bold`
-            }
+            <option value="">Admin</option>
+            <option value="/dashboard">Dashboard</option>
+            <option value="/AdminLogin">Login</option>
+            <option value="/AdminSignup">Signup</option>
+          </select>
+
+          <select
+            onChange={handleSelectChange}
+            className="py-2 px-4 bg-white text-gray-900 border border-transparent hover:border-gray-300 rounded-lg"
           >
-            Signup
-          </NavLink>
+            <option value="">Student</option>
+            <option value="/student/dashboard">Dashboard</option>
+            <option value="/StudentLogin">Login</option>
+          </select>
         </div>
       )}
     </header>
@@ -186,3 +204,4 @@ function Header() {
 }
 
 export default Header;
+

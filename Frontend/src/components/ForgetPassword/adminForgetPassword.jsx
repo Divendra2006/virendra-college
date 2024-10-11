@@ -53,12 +53,11 @@ const AdminDeleteAccount = () => {
           {message}
         </p>
       )}
-
-      {/* Conditionally render signup link if the account is successfully deleted */}
+      
       {isSuccess && (
         <div className="mt-6">
           <Link
-            to="/signup"
+            to="/AdminSignup"
             className="text-blue-600 underline text-lg"
           >
             Go to Signup Page

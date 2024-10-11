@@ -68,7 +68,7 @@ const registerStudent = asyncHandler(async(req,res)=>{
       throw new ApiError(500,"something went wrong while registering the user")
     }
 
-   return res.status(201).json(
+   return res.status(200).json(
       new ApiResponse(200, createdStudent, "User registered successfully")
   );
 
@@ -77,26 +77,27 @@ const registerStudent = asyncHandler(async(req,res)=>{
 
 const loginStudent = asyncHandler(async(req,res)=>{
 
-   const {Rollno,password} = req.body;
+   const {fullName,Rollno,Class,dob,phoneNo,guardianName,yearofAdmission} = req.body;
    console.log(req.body)
 
-   if(!Rollno){
-      throw new ApiError(400,"rollno is required")
+   if ([fullName, Rollno, Class, dob, phoneNo, guardianName, yearofAdmission].some((field) => {
+      return typeof field === 'string' && field.trim() === "";
+   })) {
+      throw new ApiError(400, "All fields are required");
    }
+   
 
-   const student = await Student.findOne({
-      $or: [{Rollno}]
-   });
+   const student = await Student.findOne({fullName,Rollno,Class,dob,phoneNo,guardianName,yearofAdmission})
 
    if(!student){
       throw new ApiError(400,"student does not exit");
    }
 
-   const isPasswordValid = await student.isPasswordCorrect(password);
+   // const isPasswordValid = await student.isPasswordCorrect(password);
 
-   if(!isPasswordValid){
-      throw new ApiError(400,"incorrect password")
-   }
+   // if(!isPasswordValid){
+   //    throw new ApiError(400,"incorrect password")
+   // }
 
    const {accessToken,refreshToken} = await generateAccessandRefreshTokens(student._id)
    const loggedInStudent = await Student.findById(student._id).select("-password -refreshToken") 
@@ -233,6 +234,7 @@ const changeCurrentPssword = asyncHandler(async(req,res)=>{
 })
 
 const getCurrentStudent = asyncHandler(async(req,res)=>{
+   // console.log(req.admin)
    return res.status(200)
    .json(200,req.student,"current student fetched successfully")
 }) 
@@ -260,12 +262,12 @@ const updateAccountDetails = asyncHandler(async(req,res)=>{
 })
 
 const deleteStudentAccount = asyncHandler(async(req,res)=>{
-   const {Rollno} = req.body;
-   if(!Rollno){
-      throw new ApiError(400,"Rollno is not present")
+   const {studentId} = req.body;
+   if(!studentId){
+      throw new ApiError(400,"student id is not present")
    }
 
-   const deletedStudent = await Student.findOneAndDelete({Rollno});
+   const deletedStudent = await Student.findOneAndDelete(studentId);
    if(!deletedStudent){
       throw new ApiError(400,"student not found")
    }
@@ -278,6 +280,16 @@ const deleteStudentAccount = asyncHandler(async(req,res)=>{
 const addStudent = asyncHandler(async(req,res)=>{
    const student =new Student(req.body);
 
+   const {fullName,yearofAdmission, Rollno , Class} = req.body
+
+   const existedStudent = await Student.findOne({
+      $and:[{Rollno},{Class},{fullName},{yearofAdmission}]
+   })
+
+   if(existedStudent){
+      throw new ApiError(409,"student is already added")
+   }
+
    const response =await student.save()
    const createdResponse =await Student.findById(response._id).select("-password -refreshToken")
    if(!createdResponse){
@@ -289,14 +301,25 @@ const addStudent = asyncHandler(async(req,res)=>{
 })
 
 const getStudentByRollno = asyncHandler(async(req,res)=>{
-   const {Rollno} = req.body;
-    if(!Rollno){
-      throw new ApiError("Rollno is not found")
-    }
+   const {fullName,Class,yearofAdmission} = req.query;
+   
+   if([fullName,Class,yearofAdmission].some((field)=>{
+      return field?.trim() === ""
+   })){
+      throw new ApiError(404,"Bad request all fields are required")
+   }
 
-    const student =await Student.findOne({Rollno}).select("-password -refreshToken")
+   // console.log("searching for student",{fullName,Class,yearofAdmission})
 
-    if(!student){
+    const student =await Student.find({
+     fullName,
+     Class,
+     yearofAdmission,
+    }).select("-password -refreshToken")
+
+   //  console.log("student",student)
+
+    if(student.length === 0 ){
       throw new ApiError(400,"no student with this rollno is present")
     }
 
@@ -308,15 +331,17 @@ const getStudentByRollno = asyncHandler(async(req,res)=>{
 })
 
 const getStudentsByClass = asyncHandler(async(req,res)=>{
-   const {Class} = req.body;
-
-   if(!Class){
-      throw new ApiError(400,"Class is not found")
+   const {Class , yearofAdmission} = req.query;
+   
+   if([Class , yearofAdmission].some((field)=>{
+      return field?.trim === 0;
+   })){
+      throw new ApiError(404,"Bad request , All fields are required")
    }
 
-   const students = await Student.find({Class}).select("-password -refreshToken")
+   const students = await Student.find({Class , yearofAdmission}).select("-password -refreshToken")
 
-   if(students.length === 0){
+   if(!students || students.length === 0){
       throw new ApiError(400,"no student with this class is present")
    }
 

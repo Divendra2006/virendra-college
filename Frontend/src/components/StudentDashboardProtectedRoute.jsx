@@ -10,16 +10,16 @@ const StudentDashboardProtectedRoute = ({ children }) => {
     const verifyAuth = async () => {
       try {
         const response = await url.get('/api/v1/students/current-student', {
-          withCredentials: true, 
+          withCredentials: true,
         });
 
-        console.log("Auth response: ", response)
+        console.log("Auth response: ", response);
 
         if (response.status === 200) {
           setIsAuthenticated(true);
         }
       } catch (error) {
-        console.log("Auth error: ", error)
+        console.log("Auth error: ", error);
         setIsAuthenticated(false);
       } finally {
         setLoading(false);
@@ -29,13 +29,17 @@ const StudentDashboardProtectedRoute = ({ children }) => {
     verifyAuth();
   }, []);
 
+  // Display loading spinner or message while checking authentication
   if (loading) {
-    return <div> Loading...
-
-    </div>; 
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="text-xl font-bold">Loading...</div>
+      </div>
+    );
   }
 
-  return isAuthenticated ? children : <Navigate to="/login" />;
+  // If authenticated, render children (dashboard); otherwise, redirect to login
+  return isAuthenticated ? children : <Navigate to="/StudentLogin" replace />;
 };
 
 export default StudentDashboardProtectedRoute;

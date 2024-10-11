@@ -3,7 +3,7 @@ import url from '../axios';
 import { useNavigate } from 'react-router-dom';
 
 
-const Dashboard = () => {
+const UploadMaterial = () => {
   const [file, setFile] = useState(null);
   const [Class, setClass] = useState('');
   const [subject, setSubject] = useState('');
@@ -35,9 +35,6 @@ const Dashboard = () => {
   const resourceOptions = ['PYQs', 'Practice Questions'];
   const typeOptions = ['Problems', 'Solutions'];
 
-  const handleLogoutClick = () => {
-    navigate('/admin/logout');
-  };
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -81,14 +78,6 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 lg:p-8">
-      <div className="w-full flex justify-end">
-        <button
-          onClick={handleLogoutClick}
-          className="bg-red-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 transition duration-300"
-        >
-          Logout
-        </button>
-      </div>
 
       <div className="bg-white shadow-lg rounded-xl p-8 max-w-xl w-full mt-6">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Upload Subject Material</h1>
@@ -148,7 +137,7 @@ const Dashboard = () => {
             </select>
           </div>
 
-          {/* Resources Selection */}
+         
           <div>
             <label className="block text-lg font-medium text-gray-700">Resources:</label>
             <select
@@ -165,7 +154,6 @@ const Dashboard = () => {
             </select>
           </div>
 
-          {/* Type Selection */}
           <div>
             <label className="block text-lg font-medium text-gray-700">Type:</label>
             <select
@@ -212,4 +200,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default UploadMaterial;

@@ -195,6 +195,7 @@ const changeCurrentPssword = asyncHandler(async(req,res)=>{
 })
 
 const getCurrentAdmin = asyncHandler(async(req,res)=>{
+    // console.log(req.admin)
     return res.status(200)
     .json(200,req.admin,"current admin fetched successfully")
 })

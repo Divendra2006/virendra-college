@@ -14,7 +14,7 @@ const StudentLogout = () => {
           withCredentials: true, 
         });
 
-        navigate('/login'); 
+        navigate('/StudentLogin'); 
       } catch (error) {
         console.error('Error logging out:', error);
       }

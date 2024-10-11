@@ -14,7 +14,7 @@ const AdminLogout = () => {
           withCredentials: true, 
         });
 
-        navigate('/login'); 
+        navigate('/AdminLogin'); 
       } catch (error) {
         console.log('Error logging out:', error);
       }

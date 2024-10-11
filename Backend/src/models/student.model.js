@@ -22,20 +22,24 @@ const studentSchema = new Schema({
     },
     password:{
         type:String,
-        required:[true,"Password is required"],
     },
-    age:{
-        type:Number,
+    dob:{
+        type:Date,
     },
     address:{
         type:String,
     },
-    guardian:{
-        name:String,
-        phone:String,
+    guardianName:{
+        type:String,
     },
-    dateofAdmission:{
+    phoneNo:{
+        type:Number
+    }, 
+    yearofAdmission:{
         type:Date,
+    },
+    studentId:{
+       type : String
     },
     avatar:{
         type:String,

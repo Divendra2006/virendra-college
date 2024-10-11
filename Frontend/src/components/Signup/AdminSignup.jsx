@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import url from '../axios';
-// import axios from 'axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
 
-// axios.defaults.withCredentials = true;
 
 const AdminSignup = () => {
   const [formData, setFormData] = useState({
@@ -60,7 +58,7 @@ const AdminSignup = () => {
         });
 
         setSubmitStatus('success');
-        navigate('/login');
+        navigate('/AdminLogin');
       } catch (error) {
         setSubmitStatus('error');
       }
@@ -70,7 +68,7 @@ const AdminSignup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
       <div className="bg-white  rounded-lg p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Admin Sign Up</h1>
 
@@ -161,14 +159,14 @@ const AdminSignup = () => {
           <div className="text-center mt-4">
             <p className="text-sm">
               Already have an account?{' '}
-              <Link to="/login" className="text-blue-500 underline">
+              <Link to="/AdminLogin" className="text-red-600 underline">
                 Log in
               </Link>
             </p>
           </div>
 
           {submitStatus === 'loading' && <p className="text-blue-500 text-center mt-4">Submitting...</p>}
-          {submitStatus === 'error' && <p className="text-red-500 text-center mt-4">Registration failed. Try again.</p>}
+          {submitStatus === 'error' && <p className="text-red-500 text-center mt-4">Admin with this email are already exist</p>}
           {submitStatus === 'success' && <p className="text-green-500 text-center mt-4">Sign up successful!</p>}
         </form>
       </div>
