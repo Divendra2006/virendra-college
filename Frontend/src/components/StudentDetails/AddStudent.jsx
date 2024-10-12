@@ -27,31 +27,14 @@ function AddStudent() {
 
     const validateForm = () => {
         const newErrors = {};
-        if (!formData.fullName) {
-            newErrors.fullName = 'Full Name is required';
-        }
-        if (!formData.Rollno) {
-            newErrors.Rollno = 'Rollno is required';
-        }
-        if (!formData.Class) {
-            newErrors.Class = 'Class is required';
-        }
-        if (!formData.dob) {
-            newErrors.dob = 'date of birth is required';
-        }
-        if (!formData.address) {
-            newErrors.address = 'Address is required';
-        }
-        if (!formData.guardianName) {
-            newErrors.guardianName = 'Guardian Name is required';
-        }
-        if (!formData.phoneNo) {
-            newErrors.phoneNo = 'Phone Number is required';
-        }
-        if (!formData.yearofAdmission) {
-            newErrors.yearofAdmission = 'Date of Admission is required';
-        }
-
+        if (!formData.fullName) newErrors.fullName = 'Full Name is required';
+        if (!formData.Rollno) newErrors.Rollno = 'Rollno is required';
+        if (!formData.Class) newErrors.Class = 'Class is required';
+        if (!formData.dob) newErrors.dob = 'Date of birth is required';
+        if (!formData.address) newErrors.address = 'Address is required';
+        if (!formData.guardianName) newErrors.guardianName = 'Guardian Name is required';
+        if (!formData.phoneNo) newErrors.phoneNo = 'Phone Number is required';
+        if (!formData.yearofAdmission) newErrors.yearofAdmission = 'Date of Admission is required';
         return newErrors;
     };
 
@@ -67,7 +50,7 @@ function AddStudent() {
                 const response = await url.post('/api/v1/students/addStudent', formData);
                 setSubmitStatus('successfully student added');
             } catch (error) {
-                setSubmitStatus(`failed`);
+                setSubmitStatus('failed');
             }
         } else {
             setErrors(formErrors);
@@ -75,185 +58,157 @@ function AddStudent() {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-6">
-            <form
-                onSubmit={handleSubmit}
-                className="max-w-lg w-full mx-auto p-6 bg-white rounded-lg shadow-md mt-8"
-            >
-                <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-                    Add New Student
-                </h2>
+        <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 lg:p-8">
+            <div className="bg-white shadow-lg rounded-xl p-8 max-w-xl w-full mt-6">
+                <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Add New Student</h1>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Full Name:</label>
+                        <input
+                            type="text"
+                            name="fullName"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Full Name"
+                            required
+                        />
+                        {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
-                        Full Name
-                    </label>
-                    <input
-                        type="text"
-                        id="fullName"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Full Name"
-                        required
-                    />
-                    {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Roll No:</label>
+                        <input
+                            type="text"
+                            name="Rollno"
+                            value={formData.Rollno}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Roll No"
+                            required
+                        />
+                        {errors.Rollno && <p className="text-red-500 text-sm">{errors.Rollno}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="Rollno" className="block text-gray-700 font-medium mb-2">
-                        Roll No
-                    </label>
-                    <input
-                        type="text"
-                        id="Rollno"
-                        name="Rollno"
-                        value={formData.Rollno}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Roll No"
-                        required
-                    />
-                    {errors.Rollno && <p className="text-red-500 text-sm">{errors.Rollno}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Email (optional):</label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Email"
+                        />
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                        Email (optional)
-                    </label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Email"
-                    />
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Class:</label>
+                        <input
+                            type="number"
+                            name="Class"
+                            value={formData.Class}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Class"
+                            required
+                        />
+                        {errors.Class && <p className="text-red-500 text-sm">{errors.Class}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="Class" className="block text-gray-700 font-medium mb-2">
-                        Class
-                    </label>
-                    <input
-                        type="number"
-                        id="Class"
-                        name="Class"
-                        value={formData.Class}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Class"
-                        required
-                    />
-                    {errors.Class && <p className="text-red-500 text-sm">{errors.Class}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Date of Birth:</label>
+                        <input
+                            type="date"
+                            name="dob"
+                            value={formData.dob}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Date of Birth"
+                            required
+                        />
+                        {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="dob" className="block text-gray-700 font-medium mb-2">
-                        Date of Birth
-                    </label>
-                    <input
-                        type="date"
-                        id="dob"
-                        name="dob"
-                        value={formData.dob}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Date of Birth"
-                        required
-                    />
-                    {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Address:</label>
+                        <input
+                            type="text"
+                            name="address"
+                            value={formData.address}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Address"
+                            required
+                        />
+                        {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="address" className="block text-gray-700 font-medium mb-2">
-                        Address
-                    </label>
-                    <input
-                        type="text"
-                        id="address"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Address"
-                        required
-                    />
-                    {errors.address && <p className="text-red-500 text-sm">{errors.address}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Guardian Name:</label>
+                        <input
+                            type="text"
+                            name="guardianName"
+                            value={formData.guardianName}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Guardian Name"
+                            required
+                        />
+                        {errors.guardianName && <p className="text-red-500 text-sm">{errors.guardianName}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="guardianName" className="block text-gray-700 font-medium mb-2">
-                        Guardian Name
-                    </label>
-                    <input
-                        type="text"
-                        id="guardianName"
-                        name="guardianName"
-                        value={formData.guardianName}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Guardian Name"
-                        required
-                    />
-                    {errors.guardianName && <p className="text-red-500 text-sm">{errors.guardianName}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Phone No:</label>
+                        <input
+                            type="number"
+                            name="phoneNo"
+                            value={formData.phoneNo}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Phone No"
+                            required
+                        />
+                        {errors.phoneNo && <p className="text-red-500 text-sm">{errors.phoneNo}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="phoneNo" className="block text-gray-700 font-medium mb-2">
-                        Phone No.
-                    </label>
-                    <input
-                        type="number"
-                        id="phoneNo"
-                        name="phoneNo"
-                        value={formData.phoneNo}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                        placeholder="Phone no"
-                        required
-                    />
-                    {errors.phoneNo && <p className="text-red-500 text-sm">{errors.phoneNo}</p>}
-                </div>
+                    <div>
+                        <label className="block text-lg font-medium text-gray-700">Year of Admission:</label>
+                        <input
+                            type="year"
+                            name="yearofAdmission"
+                            value={formData.yearofAdmission}
+                            onChange={handleChange}
+                            className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
+                            placeholder="Year of Admission"
+                            required
+                        />
+                        {errors.yearofAdmission && <p className="text-red-500 text-sm">{errors.yearofAdmission}</p>}
+                    </div>
 
-                <div className="mb-4">
-                    <label htmlFor="dateofAdmission" className="block text-gray-700 font-medium mb-2">
-                        Year of Admission
-                    </label>
-                    <input
-                        type="year"
-                        id="dateofAdmission"
-                        name="yearofAdmission"
-                        value={formData.yearofAdmission}
-                        onChange={handleChange}
-                        className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-                    />
-                    {errors.yearofAdmission && <p className="text-red-500 text-sm">{errors.yearofAdmission}</p>}
-                </div>
-
-                <button
-                    type="submit"
-                    className="w-full bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:bg-indigo-700 hover:scale-105"
-                >
-                    Submit
-                </button>
+                    <button
+                        type="submit"
+                        className="w-full py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300"
+                    >
+                        Submit
+                    </button>
+                </form>
 
                 {submitStatus === 'loading' && (
-                    <p className="text-blue-500 mt-4">Submitting...</p>
+                    <p className="text-center text-lg mt-6 font-semibold text-blue-500">Submitting...</p>
                 )}
                 {submitStatus === 'successfully student added' && (
-                    <p className="text-green-500 mt-4">Student Added Successfully</p>
+                    <p className="text-center text-lg mt-6 font-semibold text-green-500">Student Added Successfully</p>
                 )}
                 {submitStatus === 'failed' && (
-                    <p className="text-red-500 mt-4">Student with this rollno and class is already added</p>
+                    <p className="text-center text-lg mt-6 font-semibold text-red-500">Failed to add student</p>
                 )}
-            </form>
+            </div>
         </div>
     );
 }
 
 export default AddStudent;
+
 
 
