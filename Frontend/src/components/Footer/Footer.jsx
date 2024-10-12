@@ -25,11 +25,11 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="bg-gray-700 text-white py-4 md:py-6">
+    <footer className="bg-gray-700 text-white p-5 md:py-6">
       <div className="max-w-full md:max-w-6xl mx-auto flex flex-col items-start">
         {/* Left Section: School Name and Info */}
         <div className="flex flex-col mb-4 w-full">
-          <div className="flex items-center mb-2">
+          <div className="flex ml-4 space-x-3  items-center mb-4">
             <img
               src="your-school-logo-url.png" // Replace with your logo URL
               alt="School Logo"
@@ -39,10 +39,10 @@ function Footer() {
               Shri Ram Vishal Singh Shrimati Ramdhani Devi Inter College
             </span>
           </div>
-          <div className="text-sm md:text-base mt-2">
+          <div className="text-sm ml-4 md:text-base mt-2">
             <span>Location: {schoolInfo.location}</span>
           </div>
-          <Link to="/terms" className="hover:underline mt-2">
+          <Link to="/terms" className="ml-4 hover:underline mt-2">
             Terms and Conditions
           </Link>
         </div>
