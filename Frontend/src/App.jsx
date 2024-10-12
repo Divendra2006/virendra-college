@@ -10,7 +10,7 @@ function App() {
     <>
     <div className="flex flex-col min-h-screen">
         <Header />
-        <div className="flex-grow">
+        <div className="flex-grow mt-0">
           <Outlet/>
         </div>
         <Footer />

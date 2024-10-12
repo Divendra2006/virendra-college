@@ -4,9 +4,6 @@ import jwt from "jsonwebtoken"
 import { Student } from "../models/student.model.js";
 
 const verifyJWT = asyncHandler(async(req,res,next)=>{
-    console.log("Cookies: ", req.cookies); 
-    console.log("Authorization Header: ", req.header("Authorization"))
-
     const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ","")
 
     if(!token){
@@ -14,8 +11,6 @@ const verifyJWT = asyncHandler(async(req,res,next)=>{
     }
 
     try {
-
-        console.log("ACCESS_TOKEN_SECRET: ", process.env.ACCESS_TOKEN_SECRET);
         const decodedToken = jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
         const student = await Student.findById(decodedToken?._id).select("-password -refreshToken")
     
