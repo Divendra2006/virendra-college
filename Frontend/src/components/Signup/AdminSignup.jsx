@@ -69,7 +69,7 @@ const AdminSignup = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
-      <div className="bg-white  rounded-lg p-8 w-full max-w-md">
+      <div className=" bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-8 w-full max-w-md">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Admin Sign Up</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
