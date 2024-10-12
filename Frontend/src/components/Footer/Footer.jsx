@@ -25,7 +25,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="bg-gray-700 text-white p-5 md:py-6">
+    <footer className="bg-gray-700 text-white p-4 md:py-6">
       <div className="max-w-full md:max-w-6xl mx-auto flex flex-col items-start">
         {/* Left Section: School Name and Info */}
         <div className="flex flex-col mb-4 w-full">
