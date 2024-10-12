@@ -10,9 +10,7 @@ const generateAccessandRefreshTokens = async(studentId)=>{
    try {
       const student = await Student.findById(studentId)
       const accessToken = student.generateAccessToken()
-      // console.log("generateAccessToken",accessToken)
       const refreshToken = student.generateRefreshToken()
-      // console.log("loda",refreshToken)
       student.refreshToken = refreshToken
       await student.save({validateBeforeSave: false})
       return {accessToken,refreshToken};
@@ -159,25 +157,15 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
    if(!incomingRefreshToken){
       throw new ApiError(401,"Unauthorized request")
    }
-
-   // console.log("Incoming refresh token", incomingRefreshToken)
-
-
    try {
-
       const decodedToken = jwt.verify(incomingRefreshToken,process.env.REFRESH_TOKEN_SECRET);
-
       const student = await Student.findById(decodedToken?._id);
-
-
       if(!student){
          throw new ApiError(401,"Invalid refresh Token")
       }
-      // console.log(student.refreshToken)
       if(incomingRefreshToken !== student?.refreshToken){
          throw new ApiError(401,"Refresh Token is expired")
       }
-      // console.log("hello")
       const options = {
          httpOnly:true,
          secure:true,
@@ -185,6 +173,7 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
       }
       
       const {accessToken,newRefreshToken} = await generateAccessandRefreshTokens(student._id)
+
       return res.status(200)
             .cookie("accessToken", accessToken, options)
             .cookie("refreshToken", newRefreshToken, options)
@@ -203,7 +192,6 @@ const refreshAccessToken = asyncHandler(async(req,res)=>{
      } else if (error.name === "JsonWebTokenError") {
          throw new ApiError(401, "Invalid refresh token");
      } else {
-      //  console.log("error",error)
          throw new ApiError(500, "An error occurred while refreshing the token");
      }
       
