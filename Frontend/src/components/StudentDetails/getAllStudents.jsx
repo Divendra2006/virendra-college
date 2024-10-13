@@ -54,12 +54,8 @@ function GetAllStudents() {
   };
 
   const handleDeleteClick = async (studentId, fullName) => {
-    
     const isConfirmed = window.confirm(`Are you sure you want to delete ${fullName}?`);
-    
     if (!isConfirmed) return; 
-
-    
     try {
       await url.delete('/api/v1/students/delete-account', { data: { studentId } });
       setStudentData(studentData.filter((student) => student._id !== studentId));
@@ -68,6 +64,7 @@ function GetAllStudents() {
       console.log('Error deleting student:', error);
     }
   };
+  
 
   return (
     <div className="min-h-screen pt-7 bg-gradient-to-r from-blue-50 to-blue-100 pb-10">

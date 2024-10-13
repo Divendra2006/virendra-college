@@ -1,12 +1,12 @@
-import React from 'react';
+import React , {useEffect,useState} from 'react';
 import { Navigate } from 'react-router-dom';
 import url from './axios';
 
 const StudentDashboardProtectedRoute = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const verifyAuth = async () => {
       try {
         const response = await url.get('/api/v1/students/current-student', {

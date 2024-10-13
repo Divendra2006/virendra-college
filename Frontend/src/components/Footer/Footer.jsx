@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 function Footer() {
-  const [schoolInfo, setSchoolInfo] = useState({
-    location: '',
-  });
+  
+  const [location , setLocation] = useState('')
 
   useEffect(() => {
     // Fetch school information from the API
@@ -13,7 +12,7 @@ function Footer() {
       try {
         const response = await fetch(''); // Replace with your API endpoint
         const data = await response.json();
-        setSchoolInfo({
+        setLocation({
           location: data.location,
         });
       } catch (error) {
