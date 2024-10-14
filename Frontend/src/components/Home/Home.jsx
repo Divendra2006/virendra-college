@@ -22,7 +22,7 @@ function Home() {
           <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-light">
           Welcome to our school, where we are deeply committed to fostering the holistic development of every child. We believe that education extends beyond textbooks and classrooms, aiming to nurture not only academic excellence but also personal growth, creativity, and emotional well-being. Our dedicated team of educators and staff work tirelessly to create a supportive and inspiring environment where every student feels valued and empowered.
 
-Through innovative teaching methods, comprehensive programs, and personalized attention, we ensure that each student receives the guidance and encouragement they need to excel. Whether it's in the classroom, on the sports field, or in extracurricular activities, we strive to cultivate a well-rounded experience that helps students discover their passions and strengths. Our goal is to equip them with the skills and confidence to navigate challenges and succeed in all aspects of life.
+          Through innovative teaching methods, comprehensive programs, and personalized attention, we ensure that each student receives the guidance and encouragement they need to excel. Whether it's in the classroom, on the sports field, or in extracurricular activities, we strive to cultivate a well-rounded experience that helps students discover their passions and strengths. Our goal is to equip them with the skills and confidence to navigate challenges and succeed in all aspects of life.
 
           </p>
         </div>
