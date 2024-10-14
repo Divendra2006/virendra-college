@@ -1,20 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 function Footer() {
-  
-  const [location , setLocation] = useState('')
+  const [location, setLocation] = useState(''); 
 
   useEffect(() => {
-    // Fetch school information from the API
     const fetchSchoolInfo = async () => {
       try {
-        const response = await fetch(''); // Replace with your API endpoint
+        const response = await fetch('your-api-endpoint'); 
         const data = await response.json();
-        setLocation({
-          location: data.location,
-        });
+        setLocation(data.location); 
       } catch (error) {
         console.log('Error fetching school info:', error);
       }
@@ -26,20 +21,19 @@ function Footer() {
   return (
     <footer className="bg-gray-700 text-white p-4 md:py-6">
       <div className="max-w-full md:max-w-6xl mx-auto flex flex-col items-start">
-        {/* Left Section: School Name and Info */}
         <div className="flex flex-col mb-4 w-full">
           <div className="flex ml-4 space-x-3  items-center mb-4">
             <img
-              src="your-school-logo-url.png" // Replace with your logo URL
+              src="your-school-logo-url.png" 
               alt="School Logo"
               className="w-12 h-12 mr-2"
             />
             <span className="text-lg md:text-xl font-semibold">
-              Shri Ram Vishal Singh Shrimati Ramdhani Devi Inter College
+              Shri Ram Vishal Singh Shrimati Ramdhani Devi Yadav Intermediate College
             </span>
           </div>
           <div className="text-sm ml-4 md:text-base mt-2">
-            <span>Location: {schoolInfo.location}</span>
+            <span>Location: {location}</span>
           </div>
           <Link to="/terms" className="ml-4 hover:underline mt-2">
             Terms and Conditions
@@ -51,6 +45,7 @@ function Footer() {
 }
 
 export default Footer;
+
 
 
 

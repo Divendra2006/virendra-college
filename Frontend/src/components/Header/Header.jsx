@@ -29,7 +29,7 @@ function Header() {
             className="w-14 h-14 mr-2"
           />
           <span className="text-xl text-white font-semibold">
-            Shri Ram Vishal Singh Shrimati Ramdhani Devi Inter College
+            Shri Ram Vishal Singh Shrimati Ramdhani Devi Yadav Intermediate College
           </span>
         </div>
 

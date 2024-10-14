@@ -6,7 +6,7 @@ function Home() {
       {/* Banner Section */}
       <div className="relative mb-16">
         <img
-          src="your-banner-image-url.jpg" // Replace with your banner image URL
+          src="/Images/school-banner.png" // Replace with your banner image URL
           alt="School Banner"
           className="w-full h-[60vh] lg:h-[926px] object-cover"
         />
@@ -20,14 +20,17 @@ function Home() {
         {/* Left Side: Paragraph */}
         <div className="flex-1 p-4 text-center md:text-left">
           <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-light">
-            Welcome to our school, where we prioritize the holistic development of every child. Our dedicated staff and innovative programs ensure that each student receives the support they need to thrive both academically and personally. Join us in creating a nurturing environment that fosters growth and success!
+          Welcome to our school, where we are deeply committed to fostering the holistic development of every child. We believe that education extends beyond textbooks and classrooms, aiming to nurture not only academic excellence but also personal growth, creativity, and emotional well-being. Our dedicated team of educators and staff work tirelessly to create a supportive and inspiring environment where every student feels valued and empowered.
+
+Through innovative teaching methods, comprehensive programs, and personalized attention, we ensure that each student receives the guidance and encouragement they need to excel. Whether it's in the classroom, on the sports field, or in extracurricular activities, we strive to cultivate a well-rounded experience that helps students discover their passions and strengths. Our goal is to equip them with the skills and confidence to navigate challenges and succeed in all aspects of life.
+
           </p>
         </div>
 
         {/* Right Side: Image Below Banner */}
         <div className="w-full md:w-1/3 flex justify-center p-4">
           <img
-            src="your-right-image-url.jpg" // Replace with your right image URL
+            src="/Images/school-lab.jpg" // Replace with your right image URL
             alt="Right Image"
             className="w-full h-auto max-w-[816px] max-h-[1005px] object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105"
           />
