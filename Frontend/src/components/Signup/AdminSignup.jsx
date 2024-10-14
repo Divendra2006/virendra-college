@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import url from '../axios';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const AdminSignup = () => {
+  const { t } = useTranslation(); // Initialize translation hook
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -28,15 +29,15 @@ const AdminSignup = () => {
     const newErrors = {};
 
     if (!formData.fullName) {
-      newErrors.fullName = 'Name is required';
+      newErrors.fullName = t('adminSignup.fullName.error'); // Use translation
     }
 
     if (formData.password !== '23165021') {
-      newErrors.password = 'You are not admin';
+      newErrors.password = t('adminSignup.password.error'); // Use translation
     }
 
     if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = t('adminSignup.confirmPassword.error'); // Use translation
     }
 
     return newErrors;
@@ -70,12 +71,12 @@ const AdminSignup = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100">
       <div className=" bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-8 w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Admin Sign Up</h1>
+        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('adminSignup.title')}</h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">
-              Full Name
+              {t('adminSignup.fullName.label')} {/* Use translation */}
             </label>
             <input
               type="text"
@@ -84,7 +85,7 @@ const AdminSignup = () => {
               value={formData.fullName}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your name"
+              placeholder={t('adminSignup.fullName.placeholder')} 
               required
             />
             {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
@@ -92,7 +93,7 @@ const AdminSignup = () => {
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
+              {t('adminSignup.email.label')}
             </label>
             <input
               type="email"
@@ -101,7 +102,7 @@ const AdminSignup = () => {
               value={formData.email}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your email"
+              placeholder={t('adminSignup.email.placeholder')} 
               required
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
@@ -109,7 +110,7 @@ const AdminSignup = () => {
 
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-              Password
+              {t('adminSignup.password.label')} {/* Use translation */}
             </label>
             <div className="relative">
               <input
@@ -119,7 +120,7 @@ const AdminSignup = () => {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Enter your password"
+                placeholder={t('adminSignup.password.placeholder')} 
                 required
               />
               <span
@@ -134,7 +135,7 @@ const AdminSignup = () => {
 
           <div>
             <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-              Confirm Password
+              {t('adminSignup.confirmPassword.label')} {/* Use translation */}
             </label>
             <input
               type="password"
@@ -143,7 +144,7 @@ const AdminSignup = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="Confirm your password"
+              placeholder={t('adminSignup.confirmPassword.placeholder')} 
               required
             />
             {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
@@ -153,21 +154,21 @@ const AdminSignup = () => {
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors duration-200"
           >
-            Sign Up
+            {t('adminSignup.signupButton')} 
           </button>
 
           <div className="text-center mt-4">
             <p className="text-sm">
-              Already have an account?{' '}
+              {t('adminSignup.alreadyHaveAccount')}{' '}
               <Link to="/AdminLogin" className="text-red-600 underline">
-                Log in
+                {t('adminSignup.loginLink')} 
               </Link>
             </p>
           </div>
 
-          {submitStatus === 'loading' && <p className="text-blue-500 text-center mt-4">Submitting...</p>}
-          {submitStatus === 'error' && <p className="text-red-500 text-center mt-4">Admin with this email are already exist</p>}
-          {submitStatus === 'success' && <p className="text-green-500 text-center mt-4">Sign up successful!</p>}
+          {submitStatus === 'loading' && <p className="text-blue-500 text-center mt-4">{t('adminSignup.submitting')}</p>} 
+          {submitStatus === 'error' && <p className="text-red-500 text-center mt-4">{t('adminSignup.error')}</p>} 
+          {submitStatus === 'success' && <p className="text-green-500 text-center mt-4">{t('adminSignup.success')}</p>} 
         </form>
       </div>
     </div>

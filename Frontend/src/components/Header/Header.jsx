@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { FaUser, FaGraduationCap } from 'react-icons/fa'; 
+import {useTranslation} from 'react-i18next'
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const {t} = useTranslation() 
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,8 +31,8 @@ function Header() {
             className="w-14 h-14 mr-2"
           />
           <span className="text-xl text-white font-semibold">
-            Shri Ram Vishal Singh Shrimati Ramdhani Devi Yadav Intermediate College
-          </span>
+           {t("schoolName")}
+           </span>
         </div>
 
         <div className="md:hidden">
@@ -62,7 +64,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            Home
+           {t("home")}
           </NavLink>
           <NavLink
             to="/about"
@@ -72,7 +74,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            About
+            {t("about")}
           </NavLink>
           <NavLink
             to="/contact"
@@ -82,7 +84,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            Contact Us
+            {t("contactUs")}
           </NavLink>
           <NavLink
             to="/career"
@@ -92,7 +94,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            Career Mentor
+            {t("careerMentor")}
           </NavLink>
         </nav>
 
@@ -107,11 +109,11 @@ function Header() {
                 style={{ backgroundImage: 'url(data:image/svg+xml;base64,PHN2ZyB...)' }} // Custom dropdown arrow image
               >
                 <option value="" className="text-gray-900">
-                  Admin
+                {t("admin")}
                 </option>
-                <option value="/dashboard">Dashboard</option>
-                <option value="/AdminLogin">Login</option>
-                <option value="/AdminSignup">Signup</option>
+                <option value="/dashboard">{t("dashboard")}</option>
+                <option value="/AdminLogin">{t("login")}</option>
+                <option value="/AdminSignup">{t("signup")}</option>
               </select>
             </div>
           </div>
@@ -124,10 +126,10 @@ function Header() {
                 className="py-2 px-4 text-lg bg-white text-gray-900 border-2 border-gray-300 rounded-lg shadow-md appearance-none focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-200"
               >
                 <option value="" className="text-gray-900">
-                  Student
+                {t("student")}
                 </option>
-                <option value="/student/dashboard">Dashboard</option>
-                <option value="/StudentLogin">Login</option>
+                <option value="/student/dashboard">{t("dashboard")}</option>
+                <option value="/StudentLogin">{t("login")}</option>
               </select>
             </div>
           </div>
@@ -145,7 +147,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            Home
+            {t("home")}
           </NavLink>
           <NavLink
             to="/about"
@@ -155,7 +157,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            About
+            {t("about")}
           </NavLink>
           <NavLink
             to="/contact"
@@ -165,7 +167,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            Contact Us
+            {t("contactUs")}
           </NavLink>
           <NavLink
             to="/career"
@@ -175,7 +177,7 @@ function Header() {
               } hover:text-orange-500 hover:font-semibold`
             }
           >
-            Career Mentor
+            {t("careerMentor")}
           </NavLink>
 
         
@@ -183,19 +185,19 @@ function Header() {
             onChange={handleSelectChange}
             className="py-2 px-4 bg-white text-gray-900 border border-transparent hover:border-gray-300 rounded-lg"
           >
-            <option value="">Admin</option>
-            <option value="/dashboard">Dashboard</option>
-            <option value="/AdminLogin">Login</option>
-            <option value="/AdminSignup">Signup</option>
+            <option value="">{t("admin")}</option>
+            <option value="/dashboard">{t("dashboard")}</option>
+            <option value="/AdminLogin">{t("login")}</option>
+            <option value="/AdminSignup">{t("signup")}</option>
           </select>
 
           <select
             onChange={handleSelectChange}
             className="py-2 px-4 bg-white text-gray-900 border border-transparent hover:border-gray-300 rounded-lg"
           >
-            <option value="">Student</option>
-            <option value="/student/dashboard">Dashboard</option>
-            <option value="/StudentLogin">Login</option>
+            <option value=""> {t("student")}</option>
+            <option value="/student/dashboard">{t("dashboard")}</option>
+            <option value="/StudentLogin">{t("login")}</option>
           </select>
         </div>
       )}

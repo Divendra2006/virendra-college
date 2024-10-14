@@ -1,0 +1,318 @@
+{
+    "schoolName" : "Shri Ram Vishal Singh Shrimati Ramdhani Devi Yadav Intermediate College",
+    "home" : "Home",
+    "about" : "About",
+    "contactUs" : "Contact Us",
+    "careerMentor" : "Career Mentor",
+    "admin" : "Admin",
+    "dashboard" : "Dashboard" ,
+    "login" : "Login" ,
+    "signup" : "Signup",
+    "student" : "Student",
+    "location" : "Location",
+    "termsAndConditions" : "Terms and Conditions",
+    "schoolBannerQuote" : "The School That Cares",
+    "school-Intro-Para": "Welcome to our school, where we are deeply committed to fostering the holistic development of every child. We believe that education extends beyond textbooks and classrooms, aiming to nurture not only academic excellence but also personal growth, creativity, and emotional well-being. Our dedicated team of educators and staff work tirelessly to create a supportive and inspiring environment where every student feels valued and empowered.\nThrough innovative teaching methods, comprehensive programs, and personalized attention, we ensure that each student receives the guidance and encouragement they need to excel. Whether it's in the classroom, on the sports field, or in extracurricular activities, we strive to cultivate a well-rounded experience that helps students discover their passions and strengths. Our goal is to equip them with the skills and confidence to navigate challenges and succeed in all aspects of life.",
+    "message-heading" : " Message from the Chairman",
+    "chairman-message" : "Our school is committed to providing a holistic educational experience that nurtures each student’s unique talents and abilities. We believe in fostering a supportive environment where students can grow, learn, and thrive. With a focus on academic excellence and character development, we prepare our students for the challenges and opportunities of the future.",
+    "quote" : "'Education is the key to unlocking your potential. It empowers you to think critically, explore new ideas, and challenge the status quo. Remember, every setback is an opportunity for growth. Embrace your journey with curiosity and resilience. Surround yourself with those who inspire you and push you to be your best. Each day is a chance to learn something new, to take a step closer to your dreams. Believe in yourself and your abilities. The future is shaped by your actions today. Go forth with confidence, knowing that you have the power to make a difference in the world.'" ,
+    "quote-writter" : "— Nelson Mandela",
+    "chairman-name" : "Virendra Singh" ,
+    "chairman" : "Chairman",
+    "about-chairman" : "Our Chairman, Mr. Virendra Singh, has been leading the school for over two decades with a vision to provide quality education and build a foundation for future leaders. His commitment to holistic learning and personal growth has driven our school's continuous success and community development.",
+    "principal-name" : "Mukhatar Ansari",
+    "principal" : "Principal" ,
+    "about-principal" : "Our Principal, Mr. Mukhatar Ansari, fosters a culture of academic excellence and personal development. Under his leadership, the school has implemented modern teaching methodologies and fostered a nurturing environment that helps students thrive academically and socially.",
+    "administrative-assistant-name" : "Mahendra Kumar",
+    "administrative-assistant" : "Administrative Assistant",
+    "about-administrative-assistant" : "Mr. Mahendra Kumar plays a crucial role in our school, managing administrative tasks and ensuring that the school runs smoothly. His dedication to student support and organization makes him an invaluable member of our team.",
+    "meet-our-teacher" : "Meet Our Teachers",
+    "contactUs-heading" : "Contact Us" ,
+    "contactUs-statement" : " We are here to assist you with any inquiries. Feel free to reach out to us through any of the following means.",
+    "postal-code" : "Postal Code: 212653" ,
+    "email" : "Email: contact@school.com",
+    "telephone" : "Telephone: (123) 456-7890",
+    "career": {
+    "title": "Meet Our Career Mentors",
+    "subtitle": "Reach out with any career-related doubts via email!",
+    "mentors": [
+      {
+        "name": "Divendra Yadav",
+        "email": "divendrasinghyadaviit@gmail.com",
+        "post": "Student at IIT BHU"
+      },
+      {
+        "name": "Luxmi Yadav",
+        "email": "bob.smith@example.com",
+        "post": "Software Engineer"
+      }
+    ]
+  },
+  "terms": {
+    "title": "Terms and Conditions",
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "Welcome to Shri Ram Vishal Singh Shrimati RamDhani Devi Inter College. By enrolling or participating in any of our services, activities, or using our facilities, you agree to the following terms and conditions. These terms outline the rules and regulations governing the use of our services, and your acceptance means you are bound by these rules."
+      },
+      "codeOfConduct": {
+        "title": "2. Code of Conduct",
+        "content": "All students, staff, and visitors are expected to behave responsibly, ethically, and with respect for others. Disrespectful or harmful behavior, including bullying, harassment, or discrimination, will not be tolerated and may result in disciplinary action or suspension from the school."
+      },
+      "useOfFacilities": {
+        "title": "3. Use of School Facilities",
+        "content": "Students are responsible for taking care of school property, including classrooms, labs, equipment, and common areas. Any damage caused intentionally or through negligence may lead to penalties, including covering the costs of repair or replacement."
+      },
+      "attendance": {
+        "title": "4. Attendance and Punctuality",
+        "content": "Students must attend all scheduled classes and activities punctually. Absenteeism and tardiness without valid reasons may affect student performance and could result in disciplinary measures."
+      },
+      "academicIntegrity": {
+        "title": "5. Academic Integrity",
+        "content": "Academic honesty is vital to maintaining a fair and equitable learning environment. Cheating, plagiarism, or any form of academic dishonesty is prohibited. Violating this policy may result in suspension, failure of the subject, or expulsion from the school."
+      },
+      "internetUse": {
+        "title": "6. Internet and Technology Use",
+        "content": "The use of the school's internet and technology resources is intended for educational purposes only.",
+        "list": [
+          "Accessing inappropriate websites.",
+          "Downloading or distributing illegal or unauthorized materials.",
+          "Cyberbullying or sharing harmful content."
+        ]
+      },
+      "privacyPolicy": {
+        "title": "7. Privacy Policy",
+        "content": "The school values your privacy. We collect and store your personal information for educational purposes, including communication and academic records. We will not share your information without your consent, except as required by law."
+      },
+      "changesToTerms": {
+        "title": "8. Changes to Terms",
+        "content": "The school reserves the right to modify these terms at any time. Any changes will be communicated to students and staff. Continued use of school services after changes constitutes acceptance of the new terms."
+      },
+      "contactInformation": {
+        "title": "9. Contact Information",
+        "content": "If you have any questions or concerns regarding these terms, please contact the school administration at [admin email or phone number]."
+      }
+    }
+  },
+  "adminDashboard": {
+    "title": "Admin Dashboard",
+    "uploadMaterial": "Upload Material",
+    "uploadStudentDetails": "Upload Student Details",
+    "getStudentList": "Get Student List",
+    "getClassList": "Get Class List",
+    "logout": "Logout"
+  },
+  "studentDashboard": {
+    "title": "Student Dashboard",
+    "class": "Class",
+    "selectClass": "Select Class",
+    "subject": "Subject",
+    "selectSubject": "Select Subject",
+    "chapter": "Chapter",
+    "selectChapter": "Select Chapter",
+    "resources": "Resources",
+    "selectResource": "Select Resource",
+    "type": "Type",
+    "selectType": "Select Type",
+    "submit": "Submit",
+    "logout": "Logout",
+    "noMaterialFound": "No material found for the selected options.",
+    "materialsFound": "Materials Found:",
+    "clickToDownload": "Click here to view/download material"
+  },
+  "uploadMaterial": {
+    "title": "Upload Subject Material",
+    "class": "Class",
+    "selectClass": "Select Class",
+    "subject": "Subject",
+    "selectSubject": "Select Subject",
+    "chapter": "Chapter",
+    "selectChapter": "Select Chapter",
+    "resources": "Resources",
+    "selectResource": "Select Resource",
+    "type": "Type",
+    "selectType": "Select Type",
+    "uploadFile": "Upload File",
+    "upload": "Upload",
+    "uploading": "Uploading...",
+    "successMessage": "Uploaded Successfully",
+    "errorMessage": "Error uploading material"
+  },
+  "adminDeleteAccount": {
+    "title": "Delete Admin Account",
+    "enterEmail": "Enter Email:",
+    "deleteAccount": "Delete Account",
+    "successMessage": "Account deletion request has been sent.",
+    "errorMessage": "Error: Account does not exist",
+    "goToSignup": "Go to Signup Page"
+  },
+  "adminLogin": {
+    "title": "Admin Login",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "invalidCredentials": "Invalid login credentials",
+    "createAccount": "Don't have an account? Create an account",
+    "forgotPassword": "Forgot Password?"
+  },
+  "studentLogin": {
+    "title": "Student Login",
+    "fullName": "Full Name",
+    "rollNo": "Roll No",
+    "class": "Class",
+    "dob": "Date of Birth",
+    "guardianName": "Guardian Name",
+    "phoneNo": "Phone No",
+    "yearOfAdmission": "Year of Admission",
+    "submit": "Login",
+    "fullNameRequired": "Full name is required",
+    "rollNoRequired": "Roll no is required",
+    "classRequired": "Class is required",
+    "dobRequired": "Date of birth is required",
+    "guardianNameRequired": "Guardian name is required",
+    "phoneNoRequired": "Phone no is required",
+    "yearOfAdmissionRequired": "Year of admission is required",
+    "submitting": "Submitting...",
+    "loginSuccessful": "Login Successful!",
+    "loginFailed": "Student not match with these credentials"
+  },
+  "adminLogout": {
+    "title": "Logging out...",
+    "message": "Please wait while we log you out."
+  },
+  "studentLogout": {
+    "title": "Logging out...",
+    "message": "Please wait while we log you out."
+  },
+  "adminSignup": {
+    "title": "Admin Sign Up",
+    "fullName": {
+      "label": "Full Name",
+      "placeholder": "Enter your name",
+      "error": "Name is required"
+    },
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "error": "Email is required"
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "Enter your password",
+      "error": "You are not admin"
+    },
+    "confirmPassword": {
+      "label": "Confirm Password",
+      "placeholder": "Confirm your password",
+      "error": "Passwords do not match"
+    },
+    "signupButton": "Sign Up",
+    "alreadyHaveAccount": "Already have an account?",
+    "loginLink": "Log in",
+    "submitting": "Submitting...",
+    "error": "Admin with this email already exists",
+    "success": "Sign up successful!"
+  },
+  "addStudent": {
+    "title": "Add New Student",
+    "fullName": {
+      "label": "Full Name:",
+      "placeholder": "Full Name",
+      "error": "Full Name is required"
+    },
+    "rollNo": {
+      "label": "Roll No:",
+      "placeholder": "Roll No",
+      "error": "Roll No is required"
+    },
+    "email": {
+      "label": "Email (optional):",
+      "placeholder": "Email"
+    },
+    "class": {
+      "label": "Class:",
+      "placeholder": "Class",
+      "error": "Class is required"
+    },
+    "dob": {
+      "label": "Date of Birth:",
+      "placeholder": "Date of Birth",
+      "error": "Date of Birth is required"
+    },
+    "address": {
+      "label": "Address:",
+      "placeholder": "Address",
+      "error": "Address is required"
+    },
+    "guardianName": {
+      "label": "Guardian Name:",
+      "placeholder": "Guardian Name",
+      "error": "Guardian Name is required"
+    },
+    "phoneNo": {
+      "label": "Phone No:",
+      "placeholder": "Phone No",
+      "error": "Phone Number is required"
+    },
+    "yearOfAdmission": {
+      "label": "Year of Admission:",
+      "placeholder": "Year of Admission",
+      "error": "Year of Admission is required"
+    },
+    "submitButton": "Submit",
+    "submitting": "Submitting...",
+    "success": "Student Added Successfully",
+    "failure": "student already added"
+  },
+  "getStudents": {
+    "classLabel": "Class",
+    "yearOfAdmissionLabel": "Year of Admission",
+    "submitButton": "Submit",
+    "loading": "Loading...",
+    "success": "Students fetched successfully!",
+    "failed": "Failed to fetch students.",
+    "studentDetails": "Student Details",
+    "table": {
+      "sNo": "S.No",
+      "fullName": "Full Name",
+      "guardianName": "Guardian Name",
+      "class": "Class",
+      "rollNo": "Roll No",
+      "dob": "Date of Birth",
+      "phoneNo": "Phone No",
+      "address": "Address",
+      "yearOfAdmission": "Year of Admission",
+      "actions": "Actions"
+    },
+    "deleteConfirmation": "Are you sure you want to delete {{fullName}}?"
+  },
+  "searchStudent": "Search Student",
+  "fullName": "Full Name",
+  "class": "Class",
+  "yearOfAdmission": "Year of Admission",
+  "selectClass": "Select Class",
+  "selectYear": "Select Year of Admission",
+  "submit": "Submit",
+  "loading": "Loading...",
+  "studentFetched": "Student fetched successfully!",
+  "studentNotFound": "Student not found.",
+  "studentDetails": "Student Details",
+  "sNo": "S.No",
+  "guardianName": "Guardian Name",
+  "rollNo": "Roll No",
+  "dob": "Date of Birth",
+  "phoneNo": "Phone No",
+  "address": "Address",
+  "actions": "Actions",
+  "deleteConfirm": "Are you sure you want to delete student {{name}}?",
+  "checkingAuthentication": "Checking Authentication...",
+  "unauthorizedAccess": "Unauthorized Access",
+  "redirectingToLogin": "Redirecting to login page...",
+  "studentloading": "Loading..."
+
+  
+    
+      
+      
+
+}

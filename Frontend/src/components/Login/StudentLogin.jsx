@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import url from '../axios.jsx'; // Assuming this is the axios instance
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const StudentLogin = () => {
+  const { t } = useTranslation(); // Initialize translation hook
   const [formData, setFormData] = useState({
     fullName: '',
     Rollno: '',
@@ -12,7 +14,7 @@ const StudentLogin = () => {
     phoneNo: '',
     yearofAdmission: '',
   });
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState({});
   const [submitStatus, setSubmitStatus] = useState('');
   const navigate = useNavigate();
 
@@ -26,25 +28,25 @@ const StudentLogin = () => {
   const validateErrors = () => {
     const newErrors = {};
     if (!formData.fullName) {
-      newErrors.fullName = 'Full name is required';
+      newErrors.fullName = t('studentLogin.fullNameRequired');
     }
     if (!formData.Rollno) {
-      newErrors.Rollno = 'Roll no is required';
+      newErrors.Rollno = t('studentLogin.rollNoRequired');
     }
     if (!formData.Class) {
-      newErrors.Class = 'Class is required';
+      newErrors.Class = t('studentLogin.classRequired');
     }
     if (!formData.dob) {
-      newErrors.dob = 'Date of birth is required';
+      newErrors.dob = t('studentLogin.dobRequired');
     }
     if (!formData.guardianName) {
-      newErrors.guardianName = 'Guardian name is required';
+      newErrors.guardianName = t('studentLogin.guardianNameRequired');
     }
     if (!formData.phoneNo) {
-      newErrors.phoneNo = 'Phone no is required';
+      newErrors.phoneNo = t('studentLogin.phoneNoRequired');
     }
     if (!formData.yearofAdmission) {
-      newErrors.yearofAdmission = 'Year of admission is required';
+      newErrors.yearofAdmission = t('studentLogin.yearOfAdmissionRequired');
     }
     return newErrors;
   };
@@ -70,12 +72,12 @@ const StudentLogin = () => {
 
   return (
     <div className="min-h-screen flex items-center p-2 justify-center bg-gradient-to-r from-blue-50 to-blue-100">
-      <div className="max-w-md w-full space-y-8 p-8  bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg rounded-lg">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">Student Login</h2>
+      <div className="max-w-md w-full space-y-8 p-8 bg-gradient-to-r from-blue-50 to-blue-100 shadow-lg rounded-lg">
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">{t('studentLogin.title')}</h2>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div className="mb-4">
             <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
-              Full Name
+              {t('studentLogin.fullName')}
             </label>
             <input
               type="text"
@@ -84,7 +86,7 @@ const StudentLogin = () => {
               value={formData.fullName}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Full Name"
+              placeholder={t('studentLogin.fullName')}
               required
             />
             {errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
@@ -92,7 +94,7 @@ const StudentLogin = () => {
 
           <div className="mb-4">
             <label htmlFor="Rollno" className="block text-gray-700 font-medium mb-2">
-              Roll No
+              {t('studentLogin.rollNo')}
             </label>
             <input
               type="text"
@@ -101,7 +103,7 @@ const StudentLogin = () => {
               value={formData.Rollno}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Roll No"
+              placeholder={t('studentLogin.rollNo')}
               required
             />
             {errors.Rollno && <p className="text-red-500 text-sm">{errors.Rollno}</p>}
@@ -109,7 +111,7 @@ const StudentLogin = () => {
 
           <div className="mb-4">
             <label htmlFor="Class" className="block text-gray-700 font-medium mb-2">
-              Class
+              {t('studentLogin.class')}
             </label>
             <input
               type="number"
@@ -118,7 +120,7 @@ const StudentLogin = () => {
               value={formData.Class}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Class"
+              placeholder={t('studentLogin.class')}
               required
             />
             {errors.Class && <p className="text-red-500 text-sm">{errors.Class}</p>}
@@ -126,7 +128,7 @@ const StudentLogin = () => {
 
           <div className="mb-4">
             <label htmlFor="dob" className="block text-gray-700 font-medium mb-2">
-              Date of Birth
+              {t('studentLogin.dob')}
             </label>
             <input
               type="date"
@@ -135,7 +137,6 @@ const StudentLogin = () => {
               value={formData.dob}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Date of Birth"
               required
             />
             {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
@@ -143,7 +144,7 @@ const StudentLogin = () => {
 
           <div className="mb-4">
             <label htmlFor="guardianName" className="block text-gray-700 font-medium mb-2">
-              Guardian Name
+              {t('studentLogin.guardianName')}
             </label>
             <input
               type="text"
@@ -152,7 +153,7 @@ const StudentLogin = () => {
               value={formData.guardianName}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Guardian Name"
+              placeholder={t('studentLogin.guardianName')}
               required
             />
             {errors.guardianName && <p className="text-red-500 text-sm">{errors.guardianName}</p>}
@@ -160,16 +161,16 @@ const StudentLogin = () => {
 
           <div className="mb-4">
             <label htmlFor="phoneNo" className="block text-gray-700 font-medium mb-2">
-              Phone No
+              {t('studentLogin.phoneNo')}
             </label>
             <input
-              type="phoneno"
+              type="tel" // Changed from phoneno to tel
               id="phoneNo"
               name="phoneNo"
               value={formData.phoneNo}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Phone no"
+              placeholder={t('studentLogin.phoneNo')}
               required
             />
             {errors.phoneNo && <p className="text-red-500 text-sm">{errors.phoneNo}</p>}
@@ -177,7 +178,7 @@ const StudentLogin = () => {
 
           <div className="mb-4">
             <label htmlFor="yearofAdmission" className="block text-gray-700 font-medium mb-2">
-              Year of Admission
+              {t('studentLogin.yearOfAdmission')}
             </label>
             <input
               type="text"
@@ -186,7 +187,7 @@ const StudentLogin = () => {
               value={formData.yearofAdmission}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-indigo-500"
-              placeholder="Year of Admission"
+              placeholder={t('studentLogin.yearOfAdmission')}
               required
             />
             {errors.yearofAdmission && <p className="text-red-500 text-sm">{errors.yearofAdmission}</p>}
@@ -196,17 +197,17 @@ const StudentLogin = () => {
             type="submit"
             className="w-full bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 ease-in-out transform hover:bg-indigo-700 hover:scale-105"
           >
-            Login
+            {t('studentLogin.submit')}
           </button>
 
           {submitStatus === 'loading' && (
-            <p className="text-blue-500 mt-4">Submitting...</p>
+            <p className="text-blue-500 mt-4">{t('studentLogin.submitting')}</p>
           )}
           {submitStatus === 'success' && (
-            <p className="text-green-500 mt-4">Login Successful!</p>
+            <p className="text-green-500 mt-4">{t('studentLogin.loginSuccessful')}</p>
           )}
           {submitStatus === 'failed' && (
-            <p className="text-red-500 mt-4">Student not match with this credentials</p>
+            <p className="text-red-500 mt-4">{t('studentLogin.loginFailed')}</p>
           )}
         </form>
       </div>
@@ -215,3 +216,4 @@ const StudentLogin = () => {
 };
 
 export default StudentLogin;
+

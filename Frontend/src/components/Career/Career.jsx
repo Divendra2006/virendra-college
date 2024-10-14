@@ -1,26 +1,16 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Career() {
-  const mentors = [
-    {
-      name: 'Divendra Yadav',
-      email: 'divendrasinghyadaviit@gmail.com',
-      post: 'Student at IIT BHU',
-      photo: 'https://via.placeholder.com/150', // Replace with actual photo URL
-    },
-    {
-      name: 'Luxmi Yadav',
-      email: 'bob.smith@example.com',
-      post: 'Software Engineer',
-      photo: 'https://via.placeholder.com/150', // Replace with actual photo URL
-    },
-  ];
+  const { t } = useTranslation();
+
+  const mentors = t('career.mentors', { returnObjects: true });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg shadow-lg mt-16 py-8">
-      <h1 className="text-4xl font-bold text-center text-blue-800 mb-6">Meet Our Career Mentors</h1>
+      <h1 className="text-4xl font-bold text-center text-blue-800 mb-6">{t('career.title')}</h1>
       <h2 className="text-xl font-medium text-center text-gray-700 mb-8">
-        Reach out with any career-related doubts via email!
+        {t('career.subtitle')}
       </h2>
 
       {/* Stack mentors vertically on small screens */}
@@ -31,7 +21,7 @@ function Career() {
             className="flex flex-col items-center justify-center bg-white p-6 rounded-2xl shadow-xl text-center transition-transform transform hover:scale-105"
           >
             <img
-              src={mentor.photo}
+              src={mentor.photo || 'https://via.placeholder.com/150'}
               alt={mentor.name}
               className="w-40 h-40 rounded-full mb-4 border-4 border-blue-300 shadow-lg"
             />

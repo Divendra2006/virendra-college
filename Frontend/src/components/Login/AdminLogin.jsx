@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import url from '../axios.jsx';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const AdminLogin = () => {
+  const { t } = useTranslation();  // Initialize translation hook
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +20,7 @@ const AdminLogin = () => {
       navigate('/dashboard');
       console.log('Login successful:', response.data);
     } catch (error) {
-      setErrorMessage('Invalid login credentials');
+      setErrorMessage(t('adminLogin.invalidCredentials')); // Use translation for error message
       console.log('login error', error);
     }
   };
@@ -27,12 +29,12 @@ const AdminLogin = () => {
     <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-50 to-blue-100">
       <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow-md rounded-lg p-8 max-w-md w-full">
         <p className="text-2xl text-center font-bold mb-6 text-gray-800">
-          Admin Login
+          {t('adminLogin.title')}
         </p>
         <form onSubmit={handleLogin} className="space-y-6">
           <div>
             <label htmlFor="email" className="block text-lg font-medium text-gray-700">
-              Email
+              {t('adminLogin.email')}
             </label>
             <input
               type="email"
@@ -47,7 +49,7 @@ const AdminLogin = () => {
 
           <div className="relative">
             <label htmlFor="password" className="block text-lg font-medium text-gray-700">
-              Password
+              {t('adminLogin.password')}
             </label>
             <input
               type={showPassword ? 'text' : 'password'}
@@ -78,21 +80,21 @@ const AdminLogin = () => {
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200"
           >
-            Login
+            {t('adminLogin.login')}
           </button>
         </form>
 
         <div className="text-center mt-6">
           <p className="text-gray-600 font-semibold">
-            Don't have an account?{' '}
+            {t('adminLogin.createAccount')}{' '}
             <Link to="/AdminSignup" className="text-red-500 underline hover:text-blue-600">
-              Create an account
+              {t('adminLogin.createAccount')}
             </Link>
           </p>
         </div>
         <div className="text-center mt-2">
           <Link to="/admin/forget-password" className="text-red-500 underline font-semibold hover:text-blue-600">
-            Forgot Password?
+            {t('adminLogin.forgotPassword')}
           </Link>
         </div>
       </div>
@@ -101,3 +103,4 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
+

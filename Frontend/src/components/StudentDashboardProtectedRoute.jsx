@@ -1,8 +1,10 @@
-import React , {useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import url from './axios';
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 const StudentDashboardProtectedRoute = ({ children }) => {
+  const { t } = useTranslation(); // Initialize translation
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -33,7 +35,7 @@ const StudentDashboardProtectedRoute = ({ children }) => {
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center">
-        <div className="text-xl font-bold">Loading...</div>
+        <div className="text-xl font-bold">{t('studentloading')}</div> {/* Use translation key */}
       </div>
     );
   }
@@ -43,3 +45,4 @@ const StudentDashboardProtectedRoute = ({ children }) => {
 };
 
 export default StudentDashboardProtectedRoute;
+

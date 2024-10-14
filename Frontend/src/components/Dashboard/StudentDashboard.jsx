@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import url from '../axios';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // Import useTranslation
 
 const StudentDashboard = () => {
+  const { t } = useTranslation(); // Hook to access translations
   const [selectedClass, setSelectedClass] = useState('');
   const [selectedSubject, setSelectedSubject] = useState('');
   const [selectedChapter, setSelectedChapter] = useState('');
@@ -19,7 +21,6 @@ const StudentDashboard = () => {
     History: ['Chapter 1: Ancient History', 'Chapter 2: Medieval History', 'Chapter 3: Modern History'],
   };
 
- 
   const resourceOptions = ['PYQs', 'Practice Questions'];
   const typeOptions = ['Problems', 'Solutions'];
 
@@ -29,7 +30,7 @@ const StudentDashboard = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage(''); 
+    setMessage('');
 
     try {
       const response = await url.get('/api/v1/material', {
@@ -38,31 +39,30 @@ const StudentDashboard = () => {
           subject: selectedSubject,
           chapter: selectedChapter,
           resources: selectedResource,
-          type: selectedType, 
+          type: selectedType,
         },
       });
 
       if (response.data && response.data.length > 0) {
-        setMaterials(response.data); 
+        setMaterials(response.data);
       } else {
-        setMessage('No material found for the selected options.');
+        setMessage(t('studentDashboard.noMaterialFound'));
         setMaterials([]);
       }
     } catch (error) {
       console.error('Error retrieving material:', error);
-      setMessage('No material found for the selected options.');
-      setMaterials([]); 
+      setMessage(t('studentDashboard.noMaterialFound'));
+      setMaterials([]);
     }
   };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-10 relative">
-
-      <h1 className="text-4xl font-bold mb-10 text-gray-800">Student Dashboard</h1>
+      <h1 className="text-4xl font-bold mb-10 text-gray-800">{t('studentDashboard.title')}</h1>
 
       <form onSubmit={handleSubmit} className="space-y-8 bg-white shadow-lg rounded-xl p-10 max-w-xl w-full">
         <div>
-          <label className="block text-lg font-medium text-gray-700">Class:</label>
+          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.class')}:</label>
           <select
             value={selectedClass}
             onChange={(e) => {
@@ -73,7 +73,7 @@ const StudentDashboard = () => {
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
           >
-            <option value="">Select Class</option>
+            <option value="">{t('studentDashboard.selectClass')}</option>
             <option value="9">Class 9</option>
             <option value="10">Class 10</option>
             <option value="11">Class 11</option>
@@ -82,7 +82,7 @@ const StudentDashboard = () => {
         </div>
 
         <div>
-          <label className="block text-lg font-medium text-gray-700">Subject:</label>
+          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.subject')}:</label>
           <select
             value={selectedSubject}
             onChange={(e) => {
@@ -91,9 +91,9 @@ const StudentDashboard = () => {
             }}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedClass} 
+            disabled={!selectedClass}
           >
-            <option value="">Select Subject</option>
+            <option value="">{t('studentDashboard.selectSubject')}</option>
             {selectedClass &&
               Object.keys(chaptersBySubject).map((subject, index) => (
                 <option key={index} value={subject}>
@@ -104,15 +104,15 @@ const StudentDashboard = () => {
         </div>
 
         <div>
-          <label className="block text-lg font-medium text-gray-700">Chapter:</label>
+          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.chapter')}:</label>
           <select
             value={selectedChapter}
             onChange={(e) => setSelectedChapter(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedSubject} 
+            disabled={!selectedSubject}
           >
-            <option value="">Select Chapter</option>
+            <option value="">{t('studentDashboard.selectChapter')}</option>
             {selectedSubject &&
               chaptersBySubject[selectedSubject]?.map((chapter, index) => (
                 <option key={index} value={chapter}>
@@ -122,17 +122,16 @@ const StudentDashboard = () => {
           </select>
         </div>
 
-      
         <div>
-          <label className="block text-lg font-medium text-gray-700">Resources:</label>
+          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.resources')}:</label>
           <select
             value={selectedResource}
             onChange={(e) => setSelectedResource(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedChapter} 
+            disabled={!selectedChapter}
           >
-            <option value="">Select Resource</option>
+            <option value="">{t('studentDashboard.selectResource')}</option>
             {resourceOptions.map((resource, index) => (
               <option key={index} value={resource}>
                 {resource}
@@ -141,17 +140,16 @@ const StudentDashboard = () => {
           </select>
         </div>
 
-       
         <div>
-          <label className="block text-lg font-medium text-gray-700">Type:</label>
+          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.type')}:</label>
           <select
             value={selectedType}
             onChange={(e) => setSelectedType(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedResource} 
+            disabled={!selectedResource}
           >
-            <option value="">Select Type</option>
+            <option value="">{t('studentDashboard.selectType')}</option>
             {typeOptions.map((type, index) => (
               <option key={index} value={type}>
                 {type}
@@ -164,7 +162,7 @@ const StudentDashboard = () => {
           type="submit"
           className="w-full py-4 bg-green-500 text-white font-bold rounded-lg shadow-lg hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-300 transition duration-300"
         >
-          Submit
+          {t('studentDashboard.submit')}
         </button>
       </form>
 
@@ -172,13 +170,12 @@ const StudentDashboard = () => {
         onClick={handleLogoutClick}
         className="min-w-[120px] mt-8 py-2 px-4 bg-red-500 text-white font-bold rounded-lg shadow-lg hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 transition duration-300"
       >
-         Logout
+        {t('studentDashboard.logout')}
       </button>
-
 
       {materials.length > 0 && (
         <div className="mt-8">
-          <p className="text-lg font-semibold">Materials Found:</p>
+          <p className="text-lg font-semibold">{t('studentDashboard.materialsFound')}</p>
           {materials.map((material, index) => (
             <div key={index}>
               <a
@@ -187,7 +184,7 @@ const StudentDashboard = () => {
                 rel="noopener noreferrer"
                 className="text-blue-500 underline mt-2 block"
               >
-                Click here to view/download material {index + 1}
+                {`${t('studentDashboard.clickToDownload')} ${index + 1}`}
               </a>
             </div>
           ))}

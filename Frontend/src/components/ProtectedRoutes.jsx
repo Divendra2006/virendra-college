@@ -1,8 +1,10 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
 import url from './axios';
+import { useTranslation } from 'react-i18next'; // Import the translation hook
 
 const ProtectedRoute = ({ children }) => {
+  const { t } = useTranslation(); // Initialize translation
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
 
@@ -27,26 +29,25 @@ const ProtectedRoute = ({ children }) => {
     verifyAuth();
   }, []);
 
- 
   if (loading) {
     return (
       <div className="min-h-screen flex justify-center items-center bg-gray-100">
-        <div className="text-2xl font-semibold text-gray-700">Checking Authentication...</div>
+        <div className="text-2xl font-semibold text-gray-700">{t('checkingAuthentication')}</div>
       </div>
     );
   }
 
-  // If authenticated, render children (dashboard); otherwise, redirect with a brief delay
   return isAuthenticated ? (
     children
   ) : (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-      <p className="text-xl text-red-600 font-semibold">Unauthorized Access</p>
-      <p className="text-lg text-gray-700 mt-2">Redirecting to login page...</p>
+      <p className="text-xl text-red-600 font-semibold">{t('unauthorizedAccess')}</p>
+      <p className="text-lg text-gray-700 mt-2">{t('redirectingToLogin')}</p>
       <Navigate to="/AdminLogin" replace />
     </div>
   );
 };
 
 export default ProtectedRoute;
+
 

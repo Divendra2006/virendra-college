@@ -26,6 +26,7 @@ import GetUniqueStudent from './components/StudentDetails/getUniqueStudent.jsx'
 import GetAllStudents from './components/StudentDetails/getAllStudents.jsx'
 import UploadMaterial from './components/Dashboard/UploadMaterial.jsx'
 import AdminDashboard from './components/Dashboard/AdminDashboard.jsx'
+import './i18n.jsx'
 
 
 

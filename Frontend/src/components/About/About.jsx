@@ -1,4 +1,5 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next'
 
 const teachers = [
   {
@@ -30,6 +31,7 @@ const teachers = [
 ];
 
 function About() {
+  const {t} = useTranslation()
   return (
     <div className="max-w-7xl mx-auto p-6 bg-gradient-to-r from-blue-50 to-blue-100">
       {/* Chairman Section */}
@@ -40,13 +42,11 @@ function About() {
           className="w-32 h-32 object-cover rounded-full border-4 border-blue-600 shadow-md"
         />
         <div className="ml-6">
-          <h2 className="text-2xl font-bold text-blue-700">Virendra Singh</h2>
-          <p className="text-lg font-bold text-gray-500">Chairman</p>
+          <h2 className="text-2xl font-bold text-blue-700">{t("chairman-name")} </h2>
+          <p className="text-lg font-bold text-gray-500">{t("chairman")} </p>
           <p className="text-gray-700 mt-2">
-            Our Chairman, Mr. Virendra Singh, has been leading the school for over two decades with a vision to
-            provide quality education and build a foundation for future leaders. His commitment to holistic learning
-            and personal growth has driven our school's continuous success and community development.
-          </p>
+           {t("about-chairman")}
+           </p>
         </div>
       </div>
 
@@ -58,12 +58,10 @@ function About() {
           className="w-32 h-32 object-cover rounded-full border-4 border-green-600 shadow-md"
         />
         <div className="ml-6">
-          <h2 className="text-2xl font-bold text-green-700">Mukhatar Ansari</h2>
-          <p className="text-lg font-bold text-gray-500">Principal</p>
+          <h2 className="text-2xl font-bold text-green-700">{t("principal-name")} </h2>
+          <p className="text-lg font-bold text-gray-500">{t("principal")} </p>
           <p className="text-gray-700 mt-2">
-            Our Principal, Mr. Mukhatar Ansari, fosters a culture of academic excellence and personal
-            development. Under his leadership, the school has implemented modern teaching methodologies
-            and fostered a nurturing environment that helps students thrive academically and socially.
+          {t("about-principal")}
           </p>
         </div>
       </div>
@@ -76,19 +74,17 @@ function About() {
           className="w-32 h-32 object-cover rounded-full border-4 border-purple-600 shadow-md"
         />
         <div className="ml-6">
-          <h2 className="text-2xl font-bold text-purple-700">Mahendra Kumar</h2>
-          <p className="text-lg font-bold text-gray-500">Administrative Assistant</p>
+          <h2 className="text-2xl font-bold text-purple-700">{t("administrative-assistant-name" )} </h2>
+          <p className="text-lg font-bold text-gray-500">{t("administrative-assistant")} </p>
           <p className="text-gray-700 mt-2">
-            Mr. Mahendra Kumar plays a crucial role in our school, managing administrative tasks and ensuring that 
-            the school runs smoothly. His dedication to student support and organization makes him an invaluable member 
-            of our team.
+           {t("about-administrative-assistant")}
           </p>
         </div>
       </div>
 
       {/* Meet Our Teachers Section */}
       <div>
-        <h2 className="text-4xl font-semibold text-center mb-12 text-blue-700">Meet Our Teachers</h2>
+        <h2 className="text-4xl font-semibold text-center mb-12 text-blue-700">{t("meet-our-teacher")} </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {teachers.map((teacher, index) => (
             <div

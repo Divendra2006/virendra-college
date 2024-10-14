@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import {useTranslation} from 'react-i18next'
 
 function Footer() {
-  const [location, setLocation] = useState(''); 
+  const [location, setLocation] = useState('');
+  const {t} =useTranslation() 
 
   useEffect(() => {
     const fetchSchoolInfo = async () => {
@@ -29,14 +31,14 @@ function Footer() {
               className="w-12 h-12 mr-2"
             />
             <span className="text-lg md:text-xl font-semibold">
-              Shri Ram Vishal Singh Shrimati Ramdhani Devi Yadav Intermediate College
+            {t("schoolName")}
             </span>
           </div>
           <div className="text-sm ml-4 md:text-base mt-2">
-            <span>Location: {location}</span>
+            <span>{t("location")}: {location}</span>
           </div>
           <Link to="/terms" className="ml-4 hover:underline mt-2">
-            Terms and Conditions
+            {t("termsAndConditions")}
           </Link>
         </div>
       </div>

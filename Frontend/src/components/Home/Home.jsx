@@ -1,6 +1,8 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next'
 
 function Home() {
+  const {t} = useTranslation()
   return (
     <div className="bg-gradient-to-r from-blue-50 to-blue-100">
       {/* Banner Section */}
@@ -11,7 +13,7 @@ function Home() {
           className="w-full h-[60vh] lg:h-[926px] object-cover"
         />
         <h1 className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-wide drop-shadow-lg">
-          The School That Cares
+          {t("schoolBannerQuote")}
         </h1>
       </div>
 
@@ -20,10 +22,7 @@ function Home() {
         {/* Left Side: Paragraph */}
         <div className="flex-1 p-4 text-center md:text-left">
           <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-light">
-          Welcome to our school, where we are deeply committed to fostering the holistic development of every child. We believe that education extends beyond textbooks and classrooms, aiming to nurture not only academic excellence but also personal growth, creativity, and emotional well-being. Our dedicated team of educators and staff work tirelessly to create a supportive and inspiring environment where every student feels valued and empowered.
-
-          Through innovative teaching methods, comprehensive programs, and personalized attention, we ensure that each student receives the guidance and encouragement they need to excel. Whether it's in the classroom, on the sports field, or in extracurricular activities, we strive to cultivate a well-rounded experience that helps students discover their passions and strengths. Our goal is to equip them with the skills and confidence to navigate challenges and succeed in all aspects of life.
-
+         {t("school-Intro-Para")}
           </p>
         </div>
 
@@ -48,10 +47,10 @@ function Home() {
         </div>
         <div className="flex-1 p-4 md:w-2/3 flex flex-col justify-center text-center md:text-left">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Message from the Chairman
+            {t("message-heading")}
           </h2>
           <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-light">
-            Our school is committed to providing a holistic educational experience that nurtures each student’s unique talents and abilities. We believe in fostering a supportive environment where students can grow, learn, and thrive. With a focus on academic excellence and character development, we prepare our students for the challenges and opportunities of the future.
+           {t("chairman-message")}
           </p>
         </div>
       </div>
@@ -59,9 +58,9 @@ function Home() {
       {/* Motivational Quote */}
       <div className="max-w-6xl mx-auto p-6 mb-16">
         <blockquote className="border-l-4 border-blue-500 pl-6 italic text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-light">
-          "Education is the key to unlocking your potential. It empowers you to think critically, explore new ideas, and challenge the status quo. Remember, every setback is an opportunity for growth. Embrace your journey with curiosity and resilience. Surround yourself with those who inspire you and push you to be your best. Each day is a chance to learn something new, to take a step closer to your dreams. Believe in yourself and your abilities. The future is shaped by your actions today. Go forth with confidence, knowing that you have the power to make a difference in the world."
-          <cite className="block mt-4 text-right text-blue-500 font-semibold">
-            — Nelson Mandela
+          {t("quote")}
+           <cite className="block mt-4 text-right text-blue-500 font-semibold">
+           {t("quote-writter")}
           </cite>
         </blockquote>
       </div>

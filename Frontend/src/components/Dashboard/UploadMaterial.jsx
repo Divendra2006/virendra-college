@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import url from '../axios';
 import { useNavigate } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 
 const UploadMaterial = () => {
+  const { t } = useTranslation();  // useTranslation hook
   const [file, setFile] = useState(null);
   const [Class, setClass] = useState('');
   const [subject, setSubject] = useState('');
@@ -35,7 +36,6 @@ const UploadMaterial = () => {
   const resourceOptions = ['PYQs', 'Practice Questions'];
   const typeOptions = ['Problems', 'Solutions'];
 
-
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
@@ -58,7 +58,7 @@ const UploadMaterial = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      setMessage('Uploaded Successfully');
+      setMessage(t('uploadMaterial.successMessage')); // Use translation
       setIsSuccess(true);
 
       setClass('');
@@ -69,7 +69,7 @@ const UploadMaterial = () => {
       setFile(null);
       e.target.reset();
     } catch (error) {
-      setMessage('Error uploading material');
+      setMessage(t('uploadMaterial.errorMessage')); // Use translation
       setIsSuccess(false);
     } finally {
       setIsUploading(false);
@@ -78,12 +78,11 @@ const UploadMaterial = () => {
 
   return (
     <div className="flex flex-col items-center justify-start min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-4 sm:p-6 lg:p-8">
-
       <div className="bg-white shadow-lg rounded-xl p-8 max-w-xl w-full mt-6">
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">Upload Subject Material</h1>
+        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">{t('uploadMaterial.title')}</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-lg font-medium text-gray-700">Class:</label>
+            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.class')}:</label>
             <select
               value={Class}
               onChange={(e) => {
@@ -94,7 +93,7 @@ const UploadMaterial = () => {
               className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
               required
             >
-              <option value="">Select Class</option>
+              <option value="">{t('uploadMaterial.selectClass')}</option>
               <option value="9">Class 9</option>
               <option value="10">Class 10</option>
               <option value="11">Class 11</option>
@@ -103,7 +102,7 @@ const UploadMaterial = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Subject:</label>
+            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.subject')}:</label>
             <select
               value={subject}
               onChange={(e) => {
@@ -114,7 +113,7 @@ const UploadMaterial = () => {
               required
               disabled={!Class}
             >
-              <option value="">Select Subject</option>
+              <option value="">{t('uploadMaterial.selectSubject')}</option>
               {Class && subjectsByClass[Class]?.map((subj, index) => (
                 <option key={index} value={subj}>{subj}</option>
               ))}
@@ -122,7 +121,7 @@ const UploadMaterial = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Chapter:</label>
+            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.chapter')}:</label>
             <select
               value={chapter}
               onChange={(e) => setChapter(e.target.value)}
@@ -130,16 +129,15 @@ const UploadMaterial = () => {
               required
               disabled={!subject}
             >
-              <option value="">Select Chapter</option>
+              <option value="">{t('uploadMaterial.selectChapter')}</option>
               {subject && chaptersBySubject[subject]?.map((ch, index) => (
                 <option key={index} value={ch}>{ch}</option>
               ))}
             </select>
           </div>
 
-         
           <div>
-            <label className="block text-lg font-medium text-gray-700">Resources:</label>
+            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.resources')}:</label>
             <select
               value={resources}
               onChange={(e) => setResources(e.target.value)}
@@ -147,7 +145,7 @@ const UploadMaterial = () => {
               required
               disabled={!chapter}
             >
-              <option value="">Select Resource</option>
+              <option value="">{t('uploadMaterial.selectResource')}</option>
               {resourceOptions.map((res, index) => (
                 <option key={index} value={res}>{res}</option>
               ))}
@@ -155,7 +153,7 @@ const UploadMaterial = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Type:</label>
+            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.type')}:</label>
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
@@ -163,7 +161,7 @@ const UploadMaterial = () => {
               required
               disabled={!resources}
             >
-              <option value="">Select Type</option>
+              <option value="">{t('uploadMaterial.selectType')}</option>
               {typeOptions.map((typeOption, index) => (
                 <option key={index} value={typeOption}>{typeOption}</option>
               ))}
@@ -171,7 +169,7 @@ const UploadMaterial = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">Upload File:</label>
+            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.uploadFile')}:</label>
             <input
               type="file"
               onChange={handleFileChange}
@@ -185,7 +183,7 @@ const UploadMaterial = () => {
             className="w-full py-3 bg-blue-500 text-white font-bold rounded-lg shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-300"
             disabled={isUploading}
           >
-            {isUploading ? 'Uploading...' : 'Upload'}
+            {isUploading ? t('uploadMaterial.uploading') : t('uploadMaterial.upload')}
           </button>
         </form>
 
