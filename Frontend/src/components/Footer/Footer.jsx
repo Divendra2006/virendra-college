@@ -26,9 +26,9 @@ function Footer() {
         <div className="flex flex-col mb-4 w-full">
           <div className="flex ml-4 space-x-3  items-center mb-4">
             <img
-              src="your-school-logo-url.png" 
+              src="/Images/schoollogo.jpg" 
               alt="School Logo"
-              className="w-12 h-12 mr-2"
+              className="w-12 h-12 object-cover rounded-full shadow-md"
             />
             <span className="text-lg md:text-xl font-semibold">
             {t("schoolName")}

@@ -26,9 +26,9 @@ function Header() {
        
         <div className="flex items-center space-x-6">
           <img
-            src="your-school-logo-url.png" 
+            src="Images/schoollogo.jpg" 
             alt="School Logo"
-            className="w-14 h-14 mr-2"
+            className="w-14 h-14 object-cover rounded-full shadow-md "
           />
           <span className="text-xl text-white font-semibold">
            {t("schoolName")}
