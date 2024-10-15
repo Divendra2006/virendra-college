@@ -151,11 +151,11 @@
     "email": "Email",
     "password": "Password",
     "login": "Login",
-    "invalidCredentials": "Invalid login credentials",
     "createAccount": "Don't have an account? Create an account",
     "forgotPassword": "Forgot Password?",
     "loading" : "logging in ..." ,
-    "successfully Login" : "Successfully Logined"
+    "successfully Login" : "Successfully Logined",
+    "failed" : "Invalid Login credentials"
     
   },
   "studentLogin": {

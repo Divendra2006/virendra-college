@@ -10,7 +10,6 @@ const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -22,7 +21,7 @@ const AdminLogin = () => {
       setSubmitStatus('successfully Login');
       navigate('/dashboard');
     } catch (error) {
-      setErrorMessage(t('adminLogin.invalidCredentials')); 
+      setSubmitStatus('failed');
       console.log('login error', error);
     }
   };
@@ -92,6 +91,9 @@ const AdminLogin = () => {
                 {submitStatus === 'successfully Login' && (
                     <p className="text-center text-lg mt-6 font-semibold text-green-500">{t('adminLogin.successfully Login')}</p> // Use translation
                 )}
+                 {submitStatus === 'failed' && (
+                     <p className="text-red-500 mt-4">{t('adminLogin.failed')}</p>
+                  )}
               
 
         <div className="text-center mt-6">
