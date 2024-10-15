@@ -73,9 +73,6 @@ const AdminLogin = () => {
             </span>
           </div>
 
-          {errorMessage && (
-            <div className="text-red-500 text-center font-semibold">{errorMessage}</div>
-          )}
 
           <button
             type="submit"
