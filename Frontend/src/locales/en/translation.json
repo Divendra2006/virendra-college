@@ -154,7 +154,7 @@
     "invalidCredentials": "Invalid login credentials",
     "createAccount": "Don't have an account? Create an account",
     "forgotPassword": "Forgot Password?",
-    "loading" : "logging in" ,
+    "loading" : "logging in ..." ,
     "successfully Login" : "Successfully Logined"
     
   },

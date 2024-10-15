@@ -154,7 +154,7 @@
     "invalidCredentials": "लॉगिन क्रेडेंशियल गलत हैं",
     "createAccount": "क्या आपके पास खाता नहीं है? खाता बनाएँ",
     "forgotPassword": "पासवर्ड भूल गए?",
-    "loading" : "लॉगिन हो रहा है",
+    "loading" : "लॉगिन हो रहा है ...",
      "successfully Login" : "सफलतापूर्वक लॉग इन किया गया"
   },
   "studentLogin": {
