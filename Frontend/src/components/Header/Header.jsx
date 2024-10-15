@@ -28,7 +28,7 @@ function Header() {
           <img
             src="Images/schoollogo.jpg" 
             alt="School Logo"
-            className="w-32 h-32 object-cover rounded-full shadow-md "
+            className="w-20 h-20 object-cover rounded-full shadow-md "
           />
           <span className="text-xl text-white font-semibold">
            {t("schoolName")}
