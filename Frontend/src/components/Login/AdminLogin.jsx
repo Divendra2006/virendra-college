@@ -87,7 +87,7 @@ const AdminLogin = () => {
         </form>
 
                 {submitStatus === 'loading' && (
-                    <p className="text-center text-lg mt-6 font-semibold text-blue-500">{t('adminLogin.loading')}</p> // Use translation
+                    <p className="text-center text-lg mt-6 font-semibold text-green-500">{t('adminLogin.loading')}</p> // Use translation
                 )}
                 {submitStatus === 'successfully Login' && (
                     <p className="text-center text-lg mt-6 font-semibold text-green-500">{t('adminLogin.successfully Login')}</p> // Use translation
