@@ -153,7 +153,10 @@
     "login": "Login",
     "invalidCredentials": "Invalid login credentials",
     "createAccount": "Don't have an account? Create an account",
-    "forgotPassword": "Forgot Password?"
+    "forgotPassword": "Forgot Password?",
+    "loading" : "logging in" ,
+    "successfully Login" : "Successfully Logined"
+    
   },
   "studentLogin": {
     "title": "Student Login",

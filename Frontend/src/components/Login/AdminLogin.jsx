@@ -9,6 +9,7 @@ const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
@@ -16,11 +17,12 @@ const AdminLogin = () => {
     e.preventDefault();
 
     try {
+      setSubmitStatus('loading');
       const response = await url.post('/api/v1/admin/login', { email, password });
+      setSubmitStatus('successfully Login');
       navigate('/dashboard');
-      console.log('Login successful:', response.data);
     } catch (error) {
-      setErrorMessage(t('adminLogin.invalidCredentials')); // Use translation for error message
+      setErrorMessage(t('adminLogin.invalidCredentials')); 
       console.log('login error', error);
     }
   };
@@ -83,6 +85,14 @@ const AdminLogin = () => {
             {t('adminLogin.login')}
           </button>
         </form>
+
+                {submitStatus === 'loading' && (
+                    <p className="text-center text-lg mt-6 font-semibold text-blue-500">{t('adminLogin.loading')}</p> // Use translation
+                )}
+                {submitStatus === 'successfully Login' && (
+                    <p className="text-center text-lg mt-6 font-semibold text-green-500">{t('adminLogin.successfully Login')}</p> // Use translation
+                )}
+              
 
         <div className="text-center mt-6">
           <p className="text-gray-600 font-semibold">
