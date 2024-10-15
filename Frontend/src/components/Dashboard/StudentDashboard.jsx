@@ -7,22 +7,19 @@ const StudentDashboard = () => {
   const { t } = useTranslation(); // Hook to access translations
   const [selectedClass, setSelectedClass] = useState('');
   const [selectedSubject, setSelectedSubject] = useState('');
-  const [selectedChapter, setSelectedChapter] = useState('');
-  const [selectedResource, setSelectedResource] = useState('');
   const [selectedType, setSelectedType] = useState('');
   const [materials, setMaterials] = useState([]);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  const chaptersBySubject = {
-    Math: ['Chapter 1: Algebra', 'Chapter 2: Geometry', 'Chapter 3: Trigonometry'],
-    Science: ['Chapter 1: Physics', 'Chapter 2: Chemistry', 'Chapter 3: Biology'],
-    English: ['Chapter 1: Grammar', 'Chapter 2: Literature', 'Chapter 3: Writing'],
-    History: ['Chapter 1: Ancient History', 'Chapter 2: Medieval History', 'Chapter 3: Modern History'],
-  };
+  const subjectOptions = {
+    9: [t('subjects.hindi'), t('subjects.english'), t('subjects.science'), t('subjects.socialScience'), t('subjects.math'), t('subjects.homeScience'), t('subjects.sanskrit'), t('subjects.urdu'), t('subjects.drawing')],
+    10: [t('subjects.hindi'), t('subjects.english'), t('subjects.science'), t('subjects.socialScience'), t('subjects.math'), t('subjects.homeScience'), t('subjects.sanskrit'), t('subjects.urdu'), t('subjects.drawing')],
+    11: [t('subjects.physics'), t('subjects.chemistry'), t('subjects.math'), t('subjects.biology'), t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
+    12: [t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
+   };
 
-  const resourceOptions = ['PYQs', 'Practice Questions'];
-  const typeOptions = ['Problems', 'Solutions'];
+   const typeOptions = [t('types.problems'), t('types.solutions')];
 
   const handleLogoutClick = () => {
     navigate('/logout');
@@ -37,8 +34,6 @@ const StudentDashboard = () => {
         params: {
           Class: selectedClass,
           subject: selectedSubject,
-          chapter: selectedChapter,
-          resources: selectedResource,
           type: selectedType,
         },
       });
@@ -68,7 +63,6 @@ const StudentDashboard = () => {
             onChange={(e) => {
               setSelectedClass(e.target.value);
               setSelectedSubject('');
-              setSelectedChapter('');
             }}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
@@ -85,58 +79,18 @@ const StudentDashboard = () => {
           <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.subject')}:</label>
           <select
             value={selectedSubject}
-            onChange={(e) => {
-              setSelectedSubject(e.target.value);
-              setSelectedChapter('');
-            }}
+            onChange={(e) => setSelectedSubject(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
             disabled={!selectedClass}
           >
             <option value="">{t('studentDashboard.selectSubject')}</option>
             {selectedClass &&
-              Object.keys(chaptersBySubject).map((subject, index) => (
+              subjectOptions[selectedClass]?.map((subject, index) => (
                 <option key={index} value={subject}>
                   {subject}
                 </option>
               ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.chapter')}:</label>
-          <select
-            value={selectedChapter}
-            onChange={(e) => setSelectedChapter(e.target.value)}
-            className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
-            required
-            disabled={!selectedSubject}
-          >
-            <option value="">{t('studentDashboard.selectChapter')}</option>
-            {selectedSubject &&
-              chaptersBySubject[selectedSubject]?.map((chapter, index) => (
-                <option key={index} value={chapter}>
-                  {chapter}
-                </option>
-              ))}
-          </select>
-        </div>
-
-        <div>
-          <label className="block text-lg font-medium text-gray-700">{t('studentDashboard.resources')}:</label>
-          <select
-            value={selectedResource}
-            onChange={(e) => setSelectedResource(e.target.value)}
-            className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
-            required
-            disabled={!selectedChapter}
-          >
-            <option value="">{t('studentDashboard.selectResource')}</option>
-            {resourceOptions.map((resource, index) => (
-              <option key={index} value={resource}>
-                {resource}
-              </option>
-            ))}
           </select>
         </div>
 
@@ -147,7 +101,6 @@ const StudentDashboard = () => {
             onChange={(e) => setSelectedType(e.target.value)}
             className="mt-2 block w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-400"
             required
-            disabled={!selectedResource}
           >
             <option value="">{t('studentDashboard.selectType')}</option>
             {typeOptions.map((type, index) => (
@@ -197,3 +150,8 @@ const StudentDashboard = () => {
 };
 
 export default StudentDashboard;
+
+
+
+
+

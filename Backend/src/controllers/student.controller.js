@@ -76,7 +76,7 @@ const registerStudent = asyncHandler(async(req,res)=>{
 const loginStudent = asyncHandler(async(req,res)=>{
 
    const {fullName,Rollno,Class,dob,phoneNo,guardianName,yearofAdmission} = req.body;
-   console.log(req.body)
+   
 
    if ([fullName, Rollno, Class, dob, phoneNo, guardianName, yearofAdmission].some((field) => {
       return typeof field === 'string' && field.trim() === "";
@@ -105,9 +105,6 @@ const loginStudent = asyncHandler(async(req,res)=>{
       secure: true,
       sameSite: "None" 
    }
-
-   console.log("Cookies: ", req.cookies);
-
 
    return res.status(200)
    .cookie("accessToken",accessToken,options)

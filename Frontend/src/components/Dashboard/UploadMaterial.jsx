@@ -8,33 +8,21 @@ const UploadMaterial = () => {
   const [file, setFile] = useState(null);
   const [Class, setClass] = useState('');
   const [subject, setSubject] = useState('');
-  const [chapter, setChapter] = useState('');
-  const [resources, setResources] = useState('');
   const [type, setType] = useState('');
   const [message, setMessage] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(null);
   const navigate = useNavigate();
 
+  // Translate subjects using keys for different classes
   const subjectsByClass = {
-    '9': ['Math', 'Science', 'English', 'Social Studies'],
-    '10': ['Math', 'Science', 'English', 'History'],
-    '11': ['Math', 'Physics', 'Chemistry', 'Biology'],
-    '12': ['Math', 'Physics', 'Chemistry', 'English'],
+    9: [t('subjects.hindi'), t('subjects.english'), t('subjects.science'), t('subjects.socialScience'), t('subjects.math'), t('subjects.homeScience'), t('subjects.sanskrit'), t('subjects.urdu'), t('subjects.drawing')],
+    10: [t('subjects.hindi'), t('subjects.english'), t('subjects.science'), t('subjects.socialScience'), t('subjects.math'), t('subjects.homeScience'), t('subjects.sanskrit'), t('subjects.urdu'), t('subjects.drawing')],
+    11: [t('subjects.physics'), t('subjects.chemistry'), t('subjects.math'), t('subjects.biology'), t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
+    12: [t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
   };
 
-  const chaptersBySubject = {
-    Math: ['Chapter 1: Algebra', 'Chapter 2: Geometry', 'Chapter 3: Trigonometry'],
-    Science: ['Chapter 1: Physics', 'Chapter 2: Chemistry', 'Chapter 3: Biology'],
-    English: ['Chapter 1: Grammar', 'Chapter 2: Literature', 'Chapter 3: Writing'],
-    History: ['Chapter 1: Ancient History', 'Chapter 2: Medieval History', 'Chapter 3: Modern History'],
-    Physics: ['Chapter 1: Mechanics', 'Chapter 2: Optics', 'Chapter 3: Thermodynamics'],
-    Chemistry: ['Chapter 1: Organic', 'Chapter 2: Inorganic', 'Chapter 3: Physical Chemistry'],
-    Biology: ['Chapter 1: Cell Biology', 'Chapter 2: Genetics', 'Chapter 3: Ecology'],
-  };
-
-  const resourceOptions = ['PYQs', 'Practice Questions'];
-  const typeOptions = ['Problems', 'Solutions'];
+  const typeOptions = [t('types.problems'), t('types.solutions')];
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -47,8 +35,6 @@ const UploadMaterial = () => {
     formData.append('file', file);
     formData.append('Class', Class);
     formData.append('subject', subject);
-    formData.append('chapter', chapter);
-    formData.append('resources', resources);
     formData.append('type', type);
 
     try {
@@ -61,10 +47,9 @@ const UploadMaterial = () => {
       setMessage(t('uploadMaterial.successMessage')); // Use translation
       setIsSuccess(true);
 
+      // Reset the form
       setClass('');
       setSubject('');
-      setChapter('');
-      setResources('');
       setType('');
       setFile(null);
       e.target.reset();
@@ -87,8 +72,7 @@ const UploadMaterial = () => {
               value={Class}
               onChange={(e) => {
                 setClass(e.target.value);
-                setSubject('');
-                setChapter('');
+                setSubject(''); // Reset subject when class changes
               }}
               className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
               required
@@ -105,10 +89,7 @@ const UploadMaterial = () => {
             <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.subject')}:</label>
             <select
               value={subject}
-              onChange={(e) => {
-                setSubject(e.target.value);
-                setChapter('');
-              }}
+              onChange={(e) => setSubject(e.target.value)}
               className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
               required
               disabled={!Class}
@@ -121,45 +102,12 @@ const UploadMaterial = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.chapter')}:</label>
-            <select
-              value={chapter}
-              onChange={(e) => setChapter(e.target.value)}
-              className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
-              required
-              disabled={!subject}
-            >
-              <option value="">{t('uploadMaterial.selectChapter')}</option>
-              {subject && chaptersBySubject[subject]?.map((ch, index) => (
-                <option key={index} value={ch}>{ch}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.resources')}:</label>
-            <select
-              value={resources}
-              onChange={(e) => setResources(e.target.value)}
-              className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
-              required
-              disabled={!chapter}
-            >
-              <option value="">{t('uploadMaterial.selectResource')}</option>
-              {resourceOptions.map((res, index) => (
-                <option key={index} value={res}>{res}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
             <label className="block text-lg font-medium text-gray-700">{t('uploadMaterial.type')}:</label>
             <select
               value={type}
               onChange={(e) => setType(e.target.value)}
               className="mt-2 block w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-4 focus:ring-blue-400"
               required
-              disabled={!resources}
             >
               <option value="">{t('uploadMaterial.selectType')}</option>
               {typeOptions.map((typeOption, index) => (
@@ -199,3 +147,6 @@ const UploadMaterial = () => {
 };
 
 export default UploadMaterial;
+
+
+
