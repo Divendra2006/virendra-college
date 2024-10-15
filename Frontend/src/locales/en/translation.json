@@ -27,6 +27,52 @@
   "administrative-assistant" : "Administrative Assistant",
   "about-administrative-assistant" : "Mr. Mahendra Kumar plays a crucial role in our school, managing administrative tasks and ensuring that the school runs smoothly. His dedication to student support and organization makes him an invaluable member of our team.",
   "meet-our-teacher" : "Meet Our Teachers",
+  "teachers": {
+    "rajiv-singh": {
+      "name": "Rajiv Singh",
+      "note": "A passionate educator focused on developing student potential."
+    },
+    "anil-kumar-nirmal": {
+      "name": "Anil Kumar Nirmal",
+      "note": "Committed to fostering a love for learning and critical thinking."
+    },
+    "mohammad-ahmad": {
+      "name": "Mohammad Ahmad",
+      "note": "Believes in the power of education to transform lives."
+    },
+    "naresh-kumar": {
+      "name": "Naresh Kumar",
+      "note": "Encourages students to explore their interests and passions."
+    },
+    "priyanshu-yadav": {
+      "name": "Priyanshu Yadav",
+      "note": "Strives to create an engaging and inclusive classroom environment."
+    },
+    "sanjay-kumar": {
+      "name": "Sanjay Kumar",
+      "note": "Dedicated to equipping students with essential life skills."
+    },
+    "santosh-kumar-srivastav": {
+      "name": "Santosh Kumar Srivastav",
+      "note": "Inspires students to reach their full potential."
+    },
+    "sarvesh-kumar": {
+      "name": "Sarvesh Kumar",
+      "note": "Focuses on holistic education and personal development."
+    },
+    "subohi-begum": {
+      "name": "Subohi Begum",
+      "note": "Passionate about empowering students through education."
+    },
+    "sulekha-devi": {
+      "name": "Sulekha Devi",
+      "note": "Believes in nurturing creativity and critical thinking."
+    },
+    "sunil-kumar": {
+      "name": "Sunil Kumar",
+      "note": "Aims to instill discipline and a love for learning."
+    }
+  },
   "contactUs-heading" : "Contact Us" ,
   "contactUs-statement" : " We are here to assist you with any inquiries. Feel free to reach out to us through any of the following means.",
   "postal-code" : "Postal Code: 212653" ,
