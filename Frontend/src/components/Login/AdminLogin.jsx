@@ -89,7 +89,7 @@ const AdminLogin = () => {
                     <p className="text-center text-lg mt-6 font-semibold text-green-500">{t('adminLogin.successfully Login')}</p> // Use translation
                 )}
                  {submitStatus === 'failed' && (
-                     <p className="text-red-500 mt-4">{t('adminLogin.failed')}</p>
+                     <p className="text-center text-lg mt-6 font-semibold text-red-500">{t('adminLogin.failed')}</p>
                   )}
               
 
