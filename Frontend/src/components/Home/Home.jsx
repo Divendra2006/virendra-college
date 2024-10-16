@@ -38,13 +38,7 @@ function Home() {
 
       {/* Additional Image and Chairman's Note */}
       <div className="flex flex-col md:flex-row justify-center mb-16 gap-8 max-w-6xl mx-auto px-6">
-        <div className="w-full md:w-1/3 p-4 flex justify-center">
-          <img
-            src="your-left-image-url.jpg" // Replace with your left image URL
-            alt="Left Image"
-            className="w-full h-auto max-w-[816px] max-h-[1005px] object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105"
-          />
-        </div>
+      
         <div className="flex-1 p-4 md:w-2/3 flex flex-col justify-center text-center md:text-left">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 leading-tight">
             {t("message-heading")}
@@ -52,6 +46,13 @@ function Home() {
           <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed font-light">
            {t("chairman-message")}
           </p>
+        </div>
+        <div className="w-full md:w-1/3 p-4 flex justify-center">
+          <img
+            src="/Images/chairman2.jpg" // Replace with your left image URL
+            alt="Left Image"
+            className="w-full h-auto max-w-[816px] max-h-[1005px] object-cover rounded-lg shadow-lg transition-transform transform hover:scale-105"
+          />
         </div>
       </div>
 

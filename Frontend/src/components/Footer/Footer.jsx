@@ -35,7 +35,7 @@ function Footer() {
             </span>
           </div>
           <div className="text-sm ml-4 md:text-base mt-2">
-            <span>{t("location")}: {location}</span>
+            <span>{t("location")}: ---📍{t("location-address")} </span>
           </div>
           <Link to="/terms" className="ml-4 hover:underline mt-2">
             {t("termsAndConditions")}

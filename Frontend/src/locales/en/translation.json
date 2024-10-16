@@ -77,7 +77,7 @@
   "contactUs-statement" : " We are here to assist you with any inquiries. Feel free to reach out to us through any of the following means.",
   "postal-code" : "Postal Code: 212653" ,
   "email" : "Email: contact@school.com",
-  "telephone" : "Telephone: (123) 456-7890",
+  "telephone" : "Telephone: 9794417198",
   "career": {
   "title": "Meet Our Career Mentors",
   "subtitle": "Reach out with any career-related doubts via email!",
@@ -380,7 +380,8 @@
 "checkingAuthentication": "Checking Authentication...",
 "unauthorizedAccess": "Unauthorized Access",
 "redirectingToLogin": "Redirecting to login page...",
-"studentloading": "Loading..."
+"studentloading": "Loading..." ,
+"location-address" : "Umarpur Gaunti Khaga Fatehpur - 212653 "
 
 
   

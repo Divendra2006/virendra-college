@@ -23,7 +23,7 @@ function About() {
       {/* Chairman Section */}
       <div className="mb-10 flex flex-col md:flex-row items-center bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
         <img
-          src="https://via.placeholder.com/150" // Replace with chairman's photo URL
+          src="/Images/chairman2.jpg" // Replace with chairman's photo URL
           alt="Chairman"
           className="w-32 h-32 object-cover rounded-full border-4 border-blue-600 shadow-md"
         />
@@ -51,7 +51,7 @@ function About() {
       {/* Administrative Assistant Section */}
       <div className="mb-10 flex flex-col md:flex-row items-center bg-white p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105">
         <img
-          src="https://via.placeholder.com/150" // Replace with administrative assistant's photo URL
+          src="/Images/Administrative-assistant2.jpg" // Replace with administrative assistant's photo URL
           alt="Administrative Assistant"
           className="w-32 h-32 object-cover rounded-full border-4 border-purple-600 shadow-md"
         />
