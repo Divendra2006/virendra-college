@@ -85,12 +85,14 @@
     {
       "name": "दिवेंद्र यादव",
       "email": "divendrasinghyadaviit@gmail.com",
-      "post": "आईआईटी बीएचयू में छात्र"
+      "post": "आईआईटी बीएचयू में छात्र",
+      "image" : "/Images/careerMentor1.1.jpg"
     },
     {
       "name": "लक्ष्मी यादव",
-      "email": "bob.smith@example.com",
-      "post": "सॉफ्टवेयर इंजीनियर"
+      "email": "yluxmi2000@gmail.com",
+      "post": "सॉफ्टवेयर इंजीनियर",
+      "image" : ""
     }
   ]
 },

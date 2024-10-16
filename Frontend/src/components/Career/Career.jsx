@@ -21,10 +21,11 @@ function Career() {
             className="flex flex-col items-center justify-center bg-white p-6 rounded-2xl shadow-xl text-center transition-transform transform hover:scale-105"
           >
             <img
-              src={mentor.photo || 'https://via.placeholder.com/150'}
+              src={mentor.image}
               alt={mentor.name}
               className="w-40 h-40 rounded-full mb-4 border-4 border-blue-300 shadow-lg"
             />
+            
             <h2 className="text-2xl font-semibold text-blue-700 mb-2">{mentor.name}</h2>
             <h3 className="text-lg font-medium text-gray-600 mb-3">{mentor.post}</h3>
             <p className="text-gray-600 font-semibold">✉️ {mentor.email}</p>

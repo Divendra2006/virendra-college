@@ -16,7 +16,7 @@ const StudentDashboard = () => {
     9: [t('subjects.hindi'), t('subjects.english'), t('subjects.science'), t('subjects.socialScience'), t('subjects.math'), t('subjects.homeScience'), t('subjects.sanskrit'), t('subjects.urdu'), t('subjects.drawing')],
     10: [t('subjects.hindi'), t('subjects.english'), t('subjects.science'), t('subjects.socialScience'), t('subjects.math'), t('subjects.homeScience'), t('subjects.sanskrit'), t('subjects.urdu'), t('subjects.drawing')],
     11: [t('subjects.physics'), t('subjects.chemistry'), t('subjects.math'), t('subjects.biology'), t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
-    12: [t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
+    12: [t('subjects.physics'), t('subjects.chemistry'), t('subjects.math'), t('subjects.biology'), t('subjects.hindi'), t('subjects.history'), t('subjects.civics'), t('subjects.sociology'), t('subjects.economics'), t('subjects.urdu'), t('subjects.sanskrit'), t('subjects.homeScience'), t('subjects.english'), t('subjects.pedagogy')],
    };
 
    const typeOptions = [t('types.problems'), t('types.solutions')];

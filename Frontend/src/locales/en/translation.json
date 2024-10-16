@@ -85,12 +85,14 @@
     {
       "name": "Divendra Yadav",
       "email": "divendrasinghyadaviit@gmail.com",
-      "post": "Student at IIT BHU"
+      "post": "Student at IIT BHU",
+      "image" : "/Images/careerMentor1.1.jpg"
     },
     {
       "name": "Luxmi Yadav",
-      "email": "bob.smith@example.com",
-      "post": "Software Engineer"
+      "email": "yluxmi2000@gmail.com",
+      "post": "Software Engineer",
+      "image" : ""
     }
   ]
 },

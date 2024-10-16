@@ -47,7 +47,7 @@ function GetAllStudents() {
         setStudentData(response.data.message.students);
         setSubmitStatus('success');
       } catch (error) {
-        setStudentData('students not found');
+        setStudentData([]);
         setSubmitStatus('failed');
       }
     } else {
