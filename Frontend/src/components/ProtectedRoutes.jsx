@@ -36,15 +36,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  return isAuthenticated ? (
-    children
-  ) : (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-      <p className="text-xl text-red-600 font-semibold">{t('unauthorizedAccess')}</p>
-      <p className="text-lg text-gray-700 mt-2">{t('redirectingToLogin')}</p>
-      <Navigate to="/AdminLogin" replace />
-    </div>
-  );
+  return isAuthenticated ? children:<Navigate to="/AdminLogin" replace />
 };
 
 export default ProtectedRoute;
