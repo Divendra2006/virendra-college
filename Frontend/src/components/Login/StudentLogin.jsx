@@ -201,7 +201,11 @@ const StudentLogin = () => {
           </button>
 
           {submitStatus === 'loading' && (
-            <p className="text-blue-500 mt-4">{t('studentLogin.submitting')}</p>
+            <div className="flex items-center mt-4">
+            <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-blue-500 mr-2"></div>
+            <p className="text-blue-500">{t('studentLogin.submitting')}</p>
+          </div>
+          
           )}
           {submitStatus === 'success' && (
             <p className="text-green-500 mt-4">{t('studentLogin.loginSuccessful')}</p>
